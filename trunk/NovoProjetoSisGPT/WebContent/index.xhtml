@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<link rel="stylesheet" href="css/style.css"></link>
+	<link rel="stylesheet" href="css/style_form.css"></link>
+</h:head>
+<h:body>
+	
+	<f:view>
+		<ui:include src="topo.xhtml"></ui:include>
+		<div class="linha_red" style="background-color: #A60402; height: 5px;"></div>
+	</f:view>
+	
+	<f:view>
+		
+		<div class="limite">
+				
+			
+			<div class="tela_login">
+					
+					<h:form  styleClass="form form_login">
+						<h:outputLabel styleClass="wh300" value="Usuário"></h:outputLabel>
+						
+						<p:inputText value="#{logar.login}" styleClass="wh280"></p:inputText>
+				 		
+						<h:outputLabel styleClass="wh300" value="Senha"></h:outputLabel>
+						
+						<p:password value="#{logar.codigo}" styleClass="wh280" ></p:password>
+						
+						<p:commandButton value="Confirmar" action="#{logar.logar}" ></p:commandButton>
+										
+					</h:form>
+				
+				<div class="clr"></div>	
+					
+			</div>
+				
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				
+				
+			<div class="clr"></div>
+		</div>
+		
+		<div class="clr"></div>
+		
+	</f:view>
+	
+	<f:view>
+		<ui:include src="rodape.xhtml"></ui:include>
+	</f:view>
+	
+</h:body>
+</html>

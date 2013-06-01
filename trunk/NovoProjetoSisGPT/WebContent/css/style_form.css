@@ -1,0 +1,170 @@
+@CHARSET "ISO-8859-1";
+
+/*Forms*/
+
+.form_funcionario, .form_relatorio{
+	position:relative;
+	width: 400px;
+	margin-top: 30px;
+	margin-left: 30px;
+}
+
+.form_maquina{
+	position:relative;
+	width: 450px;
+	margin-top: 30px;
+	margin-left: 30px;
+}
+
+.form_login{
+	font-size: 12px;
+}
+
+.form_eficiencia{
+	position: relative;
+	width: 420px;
+	margin-top: 30px;
+	margin-left: 30px;
+}
+
+.form_ordem{
+	position:relative;
+	width: 620px;
+	margin-top: 30px;
+	margin-left: 30px;
+}
+
+/*Geral*/
+
+form{
+	position: relative;
+	font-family: Arial;
+	font-size: 14px;
+}
+
+form br{
+	clear: both;
+}
+
+form label{
+	position: relative;
+	float: left;
+	margin-bottom: 5px;
+}
+
+.hasDatepicker{
+	margin-right: 10px;
+	width: 180px;
+}
+
+.bold{
+	font-weight: bold;
+	width: 100%;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+form input[type=text], form input[type=password]{
+	position: relative;
+	float: left;
+	padding: 5px;
+	margin-bottom: 10px;
+	font-weight: normal;
+	color: black;
+}
+
+form select{
+	position: relative;
+	float: left;
+	padding: 4px;
+	margin-bottom: 10px;
+	font-weight: normal;
+	color: black;
+	border-radius:5px;
+	border: solid 1px #CBC3BE;
+	border-top: solid 2px #A3A3A3;
+	cursor: pointer;
+	margin-top: 0px;
+}
+
+form textarea{
+	position:relative;
+	padding: 5px;
+}
+
+form input[type=submit]{
+	font-weight: normal;
+}
+
+/*Espaçamentos*/
+
+.rSpace10{
+	margin-right: 10px;
+}
+
+/*Tamanhos*/
+
+.wh10{
+	margin-right: 10px;
+}
+
+
+.wh300{
+	width: 300px;
+}
+
+.wh380{
+	width: 380px;
+}
+
+.wh427{
+	width: 427px;
+}
+
+.wh400{
+	width: 395px;
+}
+
+.wh405{
+	width: 405px;
+}
+
+.wh590{
+	width: 590px;
+}
+
+.wh130{
+	width: 125px;
+}
+
+.wh132{
+	width: 132px;
+}
+
+.wh140{
+	width: 140px;
+}
+
+.wh154{
+	width: 154px;
+}
+
+.wh150{
+	width: 150px;
+}
+
+.wh170{
+	width: 180px;	
+}
+
+.wh190{
+	width: 190.8px;
+}
+
+.wh200{
+	width: 200px;
+}
+
+.wh280{
+	width: 280px;
+}

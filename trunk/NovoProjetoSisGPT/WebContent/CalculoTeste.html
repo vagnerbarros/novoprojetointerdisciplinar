@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+  <title><ui:insert name="title">Default title</ui:insert></title>
+  <script>
+function calcular()
+{
+	var fatorReducao = 0,0993;
+	var qcm = 0;
+	//var somando = 0;
+	var inputs  = document.getElementsByTagName("input");
+	var retorno = document.getElementById("tempo");
+
+	for(i=0;i<inputs.length;i++){
+		 if(inputs[i].type == "text" && inputs[i].name.substr(0,5) == "preco"){
+			   var n = inputs[i].name.substr(5);
+			   var rpm = eval("document.formCalcula.rpm"+n+".value").replace(",",".");
+			   var qtd = eval("document.formCalcula.qtd"+n+".value").replace(",",".");
+			
+			   //var preco = eval("document.formCalcula.preco"+n+".value").replace(",",".");
+			 var total = parseFloat(rpm) * parseFloat(fatorReducao);
+
+			   qcm += (Math.round(total*1))/qtd;
+		 }
+	}
+
+	somando += "";
+	retorno.innerHTML = qcm.replace(".",",");
+}
+
+</script>
+  
+  
+  
+  
+  
+  	<script type="text/javascript">
+
+	function calcular(){
+		
+		var rpm = 1400;
+		var fatorReducao = 0.0993;
+		var qtdProduzir = 14500;
+		
+		var qcm = (rpm * fatorReducao) / qtdProduzir;
+		
+	
+		
+	}
+	
+	
+	</script>
+  
+  
+  
+</head>
+
+<body>
+<form name="formCalcula" id="formCalcula" method="post" action="">
+
+
+<script>
+document.write("Tempo:");
+alert(calcular().qcm);
+</script>
+
+<table width="250" border="0" cellspacing="0" cellpadding="0"><tr>
+	<td width="161">RPM</td>
+	  <td width="61">QtD</td>
+	  <td width="28">&nbsp;</td>
+  </tr>
+	<tr>
+	  <td><input name="preco1" type="text" id="preco1" value="" /></td>
+	  <td><input name="qtd1" type="text" id="qtd1" value="" size="8" /></td>
+<!-- 	  <td><input type="checkbox" name="add1" id="add1" value="" /></td> -->
+	</tr>
+
+	<tr>
+	  <td colspan="3">&nbsp;</td>
+	</tr>
+	<tr>
+	  <td colspan="3"><div align="right"><a href="java script:calcular();">Calcular</a></div></td>
+	</tr>
+	<tr>
+	  <td colspan="3">&nbsp;</td>
+	</tr>
+	<tr>
+	  <td colspan="3">Tempo: <div id="tempo">R$ 0,00</div></td>
+	</tr>
+</table>
+</form>
+</body>
+
+</html>

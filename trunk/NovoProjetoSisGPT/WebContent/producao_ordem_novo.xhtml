@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<link rel="stylesheet" href="css/style.css"></link>
+	<link rel="stylesheet" href="css/style_form.css"></link>
+</h:head>
+<h:body>
+	
+	<f:view>
+		<ui:include src="topo_sistema.xhtml"></ui:include>
+	</f:view>
+	
+	<f:view>
+		
+		<div class="limite">
+		
+			<h3>Ordem de Produção - Nova</h3>
+			<div class="clr"></div>
+			
+			<h:form styleClass="form_ordem">
+		
+				<h:outputLabel value="Número Pedido:" styleClass="wh200"></h:outputLabel>
+				
+				<br/>
+				
+				<p:inputText styleClass="wh170 rSpace10"></p:inputText>
+				
+				<br/>
+				
+				<h:outputLabel value="Data Entrada:" styleClass="wh200"></h:outputLabel>
+				<h:outputLabel value="Data Entrega:" styleClass="wh200"></h:outputLabel>
+				<h:outputLabel value="Data Saída" styleClass="wh200"></h:outputLabel>
+				
+				<br/>
+				
+				<p:inputMask mask="99/99/9999" styleClass="wh170 rSpace10"></p:inputMask>
+				<p:inputMask mask="99/99/9999" styleClass="wh170 rSpace10"></p:inputMask>
+				<p:inputMask mask="99/99/9999" styleClass="wh170"></p:inputMask>
+				
+				<br/>
+				
+				<h:outputLabel value="Marca:" styleClass="wh405"></h:outputLabel>
+				<h:outputLabel value="Unidades:" styleClass="wh170"></h:outputLabel>
+				
+				<p:inputText styleClass="wh380 rSpace10"></p:inputText>
+				<p:inputText styleClass="wh170"></p:inputText>
+				
+				<br/>
+				
+				<h:outputLabel value="Corte:" styleClass="wh200"></h:outputLabel>
+				<h:outputLabel value="Tipo:" styleClass="wh200"></h:outputLabel>
+				<h:outputLabel value="Material:" styleClass="wh200"></h:outputLabel>
+				
+				<h:selectOneMenu styleClass="wh190 rSpace10">	    			
+	    			<f:selectItem itemLabel="Dobra Meio" itemValue="0"/>
+	    			<f:selectItem itemLabel="Dobra Cantos" itemValue="0"/>	
+	    			<f:selectItem itemLabel="Corte Especial" itemValue="0"/>	
+	    			<f:selectItem itemLabel="Duas Dobras" itemValue="0"/>
+	    			<f:selectItem itemLabel="Galão" itemValue="0"/>
+	    			<f:selectItem itemLabel="Sem Corte" itemValue="0"/>
+	    			<f:selectItem itemLabel="Corte Normal" itemValue="0"/>
+	    			<f:selectItem itemLabel="Selecione tipo da Etiqueta" itemValue="0"/>	 	   						    						
+				</h:selectOneMenu>
+				
+				<h:selectOneMenu styleClass="wh190 rSpace10">	    			
+	    			<f:selectItem itemLabel="Tafetá" itemValue="0"/>	
+	    			<f:selectItem itemLabel="Alta Definição" itemValue="0"/>	  						    						
+	    			<f:selectItem itemLabel="Selecione o tipo:" itemValue="0"/>
+				</h:selectOneMenu>
+				
+				<h:selectOneMenu styleClass="wh190">	    			
+	    			<f:selectItem itemLabel="Goma" itemValue="0"/>	
+	    			<f:selectItem itemLabel="Termo Colante" itemValue="0"/>	
+	    			<f:selectItem itemLabel="Selecione o Material:" itemValue="0"/>
+	    				    						    						
+				</h:selectOneMenu>
+				
+				<h:outputLabel value="Comprimento:" styleClass="wh200"></h:outputLabel>
+				<h:outputLabel value="Largura:" styleClass="wh200"></h:outputLabel>
+				<h:outputLabel value="Quant. Produzidas:" styleClass="wh200"></h:outputLabel>
+				
+				<p:inputText styleClass="wh170 rSpace10"></p:inputText>
+				<p:inputText styleClass="wh170 rSpace10"></p:inputText>
+				<p:inputText styleClass="wh170"></p:inputText>
+				
+				<br/>
+				
+				<h:outputLabel value="Quantidade a produzir:" styleClass="wh200"></h:outputLabel>
+				<h:outputLabel value="Máquina:" styleClass="wh380"></h:outputLabel>
+				
+				<p:inputText styleClass="wh170 rSpace10"></p:inputText>
+				
+				<h:selectOneMenu styleClass="wh190 rSpace10">	    			
+	    			<f:selectItem itemLabel="Select" itemValue="0"/>
+	    			<f:selectItems value="#{manter_maquina.listMaquinas}" var="maquina" 
+						    itemValue="#{maquina.numero_maquina}" 
+						    itemLabel="#{maquina.numero_maquina}" />
+	    		</h:selectOneMenu>
+				
+				<br/>
+				
+				<p:commandButton value="Salvar"></p:commandButton>
+		
+			</h:form>
+			
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+
+			<div class="clr"></div>
+			
+		</div>
+		
+		<div class="clr"></div>
+		
+	</f:view>
+	
+	<f:view>
+		<ui:include src="rodape.xhtml"></ui:include>
+	</f:view>
+	
+</h:body>
+</html>

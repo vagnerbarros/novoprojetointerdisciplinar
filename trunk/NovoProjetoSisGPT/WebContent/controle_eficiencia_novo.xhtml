@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<link rel="stylesheet" href="css/style.css"></link>
+	<link rel="stylesheet" href="css/style_form.css"></link>
+</h:head>
+<h:body>
+	
+	<f:view>
+		<ui:include src="topo_sistema.xhtml"></ui:include>
+	</f:view>
+	
+	<f:view>
+		
+		<div class="limite">
+		
+			<h3>Controle de Eficiência - Novo</h3>
+			<div class="clr"></div>
+			
+			<h:form id="form" styleClass="form_eficiencia">
+			<p:growl id="grol" showDetail="true"></p:growl>
+		
+				<h:outputLabel value="Número/Máquina:" styleClass="wh190"></h:outputLabel>
+				<br/>
+				<h:selectOneMenu value="#{controleEficiencia.numero_maquina}"  styleClass="wh190 rSpace10">	    			
+	    			<f:selectItem itemLabel="Selecione Nº Máquina" itemValue="0"/>
+	    			<f:selectItems value="#{manter_maquina.listaMaquina}" var="maquina" 
+						    itemValue="#{maquina.numero_maquina}" 
+						    itemLabel="#{maquina.numero_maquina}" />
+
+	    		</h:selectOneMenu>
+				
+				
+				
+<!-- 				<p:inputText styleClass="wh170 rSpace10"></p:inputText> -->
+				
+				<br/>
+				
+				<h:outputLabel value="Data Parada:" styleClass="wh200"></h:outputLabel>
+				<h:outputLabel value="Data Funcionamento:" styleClass="wh200"></h:outputLabel>
+				
+				<p:calendar value="#{controleEficiencia.data_parada}"  styleClass="wh170 rSpace10"></p:calendar>
+				<p:calendar value="#{controleEficiencia.data_funcionamento}" styleClass="wh170"></p:calendar>
+				
+				<h:outputLabel value="Responsável:" styleClass="wh380"></h:outputLabel>
+	    		
+				<h:selectOneMenu value="#{controleEficiencia.operario}" styleClass="wh400">	    			
+	    			<f:selectItem itemLabel="Selecione Operário:" itemValue="0"/>
+	    			<f:selectItems value="#{manter_funcionario.listaOperarios}" var="operario" 
+						    itemValue="#{operario.nome}" 
+						    itemLabel="#{operario.nome}" />	    						    						
+				</h:selectOneMenu>
+				
+				<br/>
+				
+				<h:outputLabel value="Tipo de Corte:" styleClass="wh200"></h:outputLabel>
+				
+				<br/>
+				
+				<h:selectOneMenu value="#{controleEficiencia.tipo_corte}" styleClass="wh190 rSpace10">	    			
+	    			<f:selectItem itemLabel="Selecione o tipo:" itemValue="0"/>
+	    			<f:selectItem itemLabel="Dobra Meio" itemValue="Dobra Meio"/>
+	    			<f:selectItem itemLabel="Dobra Cantos" itemValue="Dobra Cantos"/>	
+	    			<f:selectItem itemLabel="Corte Especial" itemValue="Corte Especial"/>	
+	    			<f:selectItem itemLabel="Duas Dobras" itemValue="Duas Dobras"/>
+	    			<f:selectItem itemLabel="Galão" itemValue="Galão"/>
+	    			<f:selectItem itemLabel="Sem Corte" itemValue="Sem Corte"/>
+	    			<f:selectItem itemLabel="Corte Normal" itemValue="Corte Normal"/>	    						    						
+				</h:selectOneMenu>
+
+				<br/>
+				
+				<h:outputLabel value="Descrição do Problema:" styleClass="wh380"></h:outputLabel>
+				<p:inputTextarea value="#{controleEficiencia.descricao_problema}" styleClass="wh380"  style="padding: 5px; margin-bottom: 10px;"></p:inputTextarea>
+				
+				
+				<p:commandButton value="Salvar" actionListener="#{controleEficiencia.salvarEficiencia}" update="form"></p:commandButton>
+			
+		
+			</h:form>
+			
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+
+			<div class="clr"></div>
+			
+		</div>
+		
+		<div class="clr"></div>
+		
+	</f:view>
+	
+	<f:view>
+		<ui:include src="rodape.xhtml"></ui:include>
+	</f:view>
+	
+</h:body>
+</html>
