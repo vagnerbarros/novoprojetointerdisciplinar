@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<link rel="stylesheet" href="css/style.css"></link>
+	<link rel="stylesheet" href="css/style_form.css"></link>
+</h:head>
+<h:body>
+	
+	<f:view>
+		<ui:include src="topo_sistema.xhtml"></ui:include>
+	</f:view>
+	
+	<f:view>
+		
+		<div class="limite">
+			
+			<h3>Cadastro de Operários - Novo</h3>
+			<div class="clr"></div>
+			
+			<h:form id="form" styleClass="form_funcionario">
+			<p:growl id="grol" showDetail="true"></p:growl>
+		
+		        <h:outputLabel value="Código:" styleClass="wh380"></h:outputLabel>
+				<p:inputText value="#{funcionario.codigo}" styleClass="wh170"></p:inputText>
+				
+				<h:outputLabel value="Nome:" styleClass="wh380"></h:outputLabel>
+				<p:inputText value="#{funcionario.nome}" styleClass="wh380"></p:inputText>
+				
+				<h:outputLabel value="Turno:" styleClass="wh200"></h:outputLabel>
+				<h:outputLabel value="Setor:" styleClass="wh200"></h:outputLabel>
+				
+				<h:selectOneMenu value="#{funcionario.turno}" styleClass="wh190 rSpace10">	    			
+	    			<f:selectItem itemLabel="Selecione o turno:" itemValue=""/>
+	    			<f:selectItem itemLabel="A" itemValue="A"/>
+	    			<f:selectItem itemLabel="B" itemValue="B"/>
+	    			<f:selectItem itemLabel="C" itemValue="C"/>
+	    			<f:selectItem itemLabel="D" itemValue="D"/>
+	    			<f:selectItem itemLabel="COMERCIAL" itemValue="COMERCIAL"/>
+				</h:selectOneMenu>
+
+				
+				<h:selectOneMenu value="#{funcionario.setor}" styleClass="wh190">
+	    			<f:selectItem itemLabel="Selecione o setor:" itemValue="0"/>
+	    			<f:selectItem itemLabel="Acabamento" itemValue="acabamento"/>
+	    			<f:selectItem itemLabel="Tecelagem" itemValue="tecelagem"/>
+	    			<f:selectItem itemLabel="Laser" itemValue="laser"/>
+	    			<f:selectItem itemLabel="Ponteira" itemValue="ponteira"/>	    						    						
+				</h:selectOneMenu>
+				
+				<h:outputLabel value="Função:" styleClass="wh380"></h:outputLabel>
+				
+				<h:selectOneMenu value="#{funcionario.funcao}" styleClass="wh190">
+	    			<f:selectItem itemLabel="Selecione o setor:" itemValue="0"/>
+	    			<f:selectItem itemLabel="Gerente" itemValue="administrador"/>
+	    			<f:selectItem itemLabel="Operario" itemValue="operario"/>
+				</h:selectOneMenu>
+				
+				<h:outputLabel value="Observação:" styleClass="wh380"></h:outputLabel>
+				<p:inputTextarea styleClass="wh380" value="#{funcionario.observacao}" style="padding: 5px; margin-bottom: 10px;"></p:inputTextarea>
+				
+				<p:commandButton value="Salvar" styleClass="wh10" actionListener="#{funcionario.salvar}" update="form"></p:commandButton>
+				<p:commandButton value="Cancelar" actionListener="#{funcionario.limpar}" update="form"></p:commandButton>
+		
+			</h:form>
+			
+			<br/>
+			<br/>
+			<br/>
+
+			<div class="clr"></div>
+			
+		</div>
+		
+		<div class="clr"></div>
+		
+	</f:view>
+	
+	<f:view>
+		<ui:include src="rodape.xhtml"></ui:include>
+	</f:view>
+	
+</h:body>
+</html>

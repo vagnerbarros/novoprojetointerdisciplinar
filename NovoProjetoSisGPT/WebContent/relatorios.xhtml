@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<link rel="stylesheet" href="css/style.css"></link>
+	<link rel="stylesheet" href="css/style_form.css"></link>
+</h:head>
+<h:body>
+	
+	<f:view>
+		<ui:include src="topo_sistema.xhtml"></ui:include>
+	</f:view>
+	
+	<f:view>
+		
+		<div class="limite">
+		
+			<h3>Relatórios de Produção</h3>
+			<div class="clr"></div>
+			
+			
+			<h:form styleClass="form_relatorio">
+				
+				<h:outputLabel value="Data Inicial:" styleClass="wh154"></h:outputLabel>
+				<h:outputLabel value="Data Final:" styleClass="wh154"></h:outputLabel>
+				
+				<p:inputMask mask="99/99/9999" styleClass="wh132 rSpace10"></p:inputMask>
+				<p:inputMask mask="99/99/9999" styleClass="wh132"></p:inputMask>
+				
+				<p:commandButton value="Gerar Relatório"></p:commandButton>
+		
+			</h:form>
+			
+			<br/>
+			<br/>
+			<br/>
+
+			<div class="clr"></div>
+			
+		</div>
+		
+		<div class="clr"></div>
+		
+	</f:view>
+	
+	<f:view>
+		<ui:include src="rodape.xhtml"></ui:include>
+	</f:view>
+	
+</h:body>
+</html>

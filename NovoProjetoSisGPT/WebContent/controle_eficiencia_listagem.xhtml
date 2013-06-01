@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<link rel="stylesheet" href="css/style.css"></link>
+	<link rel="stylesheet" href="css/style_form.css"></link>
+</h:head>
+<h:body>
+	
+	<f:view>
+		<ui:include src="topo_sistema.xhtml"></ui:include>
+	</f:view>
+	
+	<f:view>
+		
+		<div class="limite">
+			
+			<h3>Listagem de Controle de Eficência :.</h3>
+			<div class="clr"></div>
+			
+			<h:form id="form"  styleClass="form_controle">
+
+				<p:dataTable id="dataTable" var="eficiencia" styleClass="tabela_listagem"
+					value="#{manter_controleEficiencia.listControleEficiencias}" widgetVar="controleEficienciaTable" 
+					paginator="true" rows="5"
+					selection="#{manter_controleEficiencia.eficiencia}"
+					selectionMode="single"
+					emptyMessage=".: Nenhum Registro Encontrado .:"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15" rowKey="#{eficiencia}">
+
+					<f:facet name="header">
+			            <p:outputPanel>
+							<p:inputText styleClass="input_filtro" id="globalFilter" onkeyup="controleEficienciaTable.filter()" 
+							style="background-image: url('css/img/find.png');
+							background-repeat: no-repeat;
+							background-position: right;
+							position:relative; width:200px; 
+							float:right; margin-top: 5px; "/>
+			            	<h:outputText value="Pesquise em todos os registros:" style="position:relative; width:250px; float:right; margin-top: 10px;" />
+			            </p:outputPanel>
+			        </f:facet>
+			        
+			        <p:column headerText="Código">
+						<h:outputText value="">
+						</h:outputText>
+					</p:column>
+			        
+
+					<p:column headerText="Máquina">
+						<h:outputText value="#{eficiencia.numero_maquina}">
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Data Parada">
+						<h:outputText value="#{eficiencia.data_parada}">
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Data Funcionamento">
+						<h:outputText value="#{eficiencia.data_funcionamento}">
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Responsável">
+						<h:outputText value="#{eficiencia.operario}">
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Tipo de Corte">
+						<h:outputText value="#{eficiencia.tipo_corte}">
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Descrição do Problema           ">
+						<h:outputText value="#{eficiencia.descricao_problema}">
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Editar" style="width:30px;">
+					<p:commandButton action="#{manter_funcionario.atualizarOperario(operario)}" value="Editar"></p:commandButton>
+					
+<!-- 						<a href="cadastro_maquinas_novo.jsf" class="links_edit"> <img src="css/img/edit.png" alt="" height="20" /> </a> -->
+					</p:column>
+					
+					<p:column headerText="Remover" style="width:30px;">
+					<p:commandButton action="#{manter_funcionario.removerOperario(operario)}" value="Excluir"></p:commandButton>
+					
+<!-- 						<a href="" class="links_edit" onclick="confirmation.show()"> <img src="css/img/remove.png" alt="" height="20" /> </a> -->
+					</p:column>
+					
+
+				</p:dataTable>
+
+			</h:form>
+
+			<div class="clr"></div>
+			
+			<h:form prependId="false">
+					
+	<p:growl id="messages" />
+
+	<h:panelGrid columns="1" cellpadding="5">
+	</h:panelGrid>
+	
+	<p:confirmDialog id="confirmDialog" message="Deseja Realmente Remover?"
+				header=".: Etigraf | Alerta :." severity="alert" widgetVar="confirmation" closable="false">
+				
+		<p:commandButton id="confirm" value="Sim" update="messages" oncomplete="confirmation.hide()"
+					style="position:relative; float:right;" />
+		<p:commandButton id="decline" value="Não" onclick="confirmation.hide()" type="button" style="position:relative; float:right;" /> 
+				
+	</p:confirmDialog>
+
+</h:form>	
+		
+		</div>
+		
+		<div class="clr"></div>
+		
+	</f:view>
+	
+	<f:view>
+		<ui:include src="rodape.xhtml"></ui:include>
+	</f:view>
+	
+</h:body>
+</html>

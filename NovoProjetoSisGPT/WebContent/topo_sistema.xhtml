@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<link rel="stylesheet" href="css/style.css"></link>
+</h:head>
+<h:body>
+
+<h:panelGroup rendered="#{funcionario.operario.funcao == 'operario' || funcionario.operario.funcao == 'administrador'}">
+	<f:view>
+
+		<div class="topo">
+
+			<div class="limite_topo">
+				<div class="left_topo">
+					<img alt="" src="css/img/logo.png" height="55" />
+				</div>
+				<div class="right_topo">
+					<img alt="" src="css/img/logo_fc.png" height="35" />
+				</div>
+			</div>
+
+			<div class="clr"></div>
+
+		</div>
+
+	</f:view>
+
+	<f:view>
+		
+		<div class="linha_red" style="background-color: #A60402; height: 5px;"></div>
+				
+		<div class="bg_menu">
+		
+		<div class="limite">
+		
+		<p:menubar style="font-size:14px; border:none;">
+	 
+				<p:menuitem value="Início " url="home.jsf" icon="ui-icon-home" rendered="#{funcionario.operario.funcao == 'operario' || funcionario.operario.funcao == 'administrador'}"/>
+
+				<p:submenu label="Produção" icon="ui-icon-contact" rendered="#{funcionario.operario.funcao == 'operario' || funcionario.operario.funcao == 'administrador'}">
+					
+					
+					<p:submenu label="Ordem de Produção">
+						<p:menuitem value="Nova" url="producao_ordem.jsf" icon="ui-icon-plus" />
+						<p:menuitem value="Listagem" url="producao_listagem.jsf" icon="ui-icon-clipboard" />
+					</p:submenu>
+					
+					<p:submenu label="Controle de Eficiência">
+						<p:menuitem value="Novo" url="controle_eficiencia_novo.jsf" icon="ui-icon-plus" />
+						<p:menuitem value="Listagem" url="controle_eficiencia_listagem.jsf" icon="ui-icon-clipboard" />
+					</p:submenu>
+
+				</p:submenu>
+				<p:submenu label="Cadastros " icon="ui-icon-document" rendered="#{funcionario.operario.funcao == 'administrador'}">
+					
+					<p:submenu label="Operários">
+						<p:menuitem value="Novo" url="cadastro_operarios_novo.jsf" icon="ui-icon-plus" />
+						<p:menuitem value="Listagem" url="cadastro_operarios_listagem.jsf" icon="ui-icon-clipboard" />
+					</p:submenu>
+					
+					<p:submenu label="Máquinas">
+						<p:menuitem value="Nova" url="cadastro_maquinas_novo.jsf" icon="ui-icon-plus" />
+						<p:menuitem value="Listagem" url="cadastro_maquinas_listagem.jsf" icon="ui-icon-clipboard" />
+					</p:submenu>
+				
+				</p:submenu>
+					
+				<p:menuitem value="Sobre " url="home.jsf" icon="ui-icon-notice" rendered="#{funcionario.operario.funcao == 'administrador'}"/>
+				
+				<p:menuitem value="Relatórios " url="relatorios.jsf" icon="ui-icon-signal" rendered="#{funcionario.operario.funcao == 'administrador'}"/>
+				
+				<p:menuitem value="Sair " url="index.jsf" icon="ui-icon-power" rendered="#{funcionario.operario.funcao == 'operario' || funcionario.operario.funcao == 'administrador'}"/>
+
+		</p:menubar>
+		
+		</div>
+		
+		</div>
+		
+		<div class="linha_red" style="background-color: #BDBFC1; height: 1px;"></div>
+		
+	<img src="css/img/grade_direita.png" width="350" style="position: absolute; right: 10px; bottom: 10px;"/>
+	<img src="css/img/grade_esquerda.png" width="350" style="position: absolute; left: 10px; top: 125px;"/>
+		
+	</f:view>
+</h:panelGroup>
+</h:body>
+</html>

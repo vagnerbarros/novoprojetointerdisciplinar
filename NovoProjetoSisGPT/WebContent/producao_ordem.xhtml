@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<link rel="stylesheet" href="css/style.css"></link>
+	<link rel="stylesheet" href="css/style_form.css"></link>
+</h:head>
+<h:body>
+	
+	<f:view>
+		<ui:include src="topo_sistema.xhtml"></ui:include>
+	</f:view>
+	
+	<f:view>
+		
+		<div class="limite">
+		
+			<h3>Ordem de Produção - Nova</h3>
+			<div class="clr"></div>
+			
+			<h:form id="form" styleClass="form_ordem">
+<!-- 			<p:growl id="grol" showDetail="true"></p:growl> -->
+			
+			
+				<h:outputLabel value="Número Pedido:" styleClass="wh200"></h:outputLabel>
+				
+				<br/>
+				
+				<p:inputText value="#{ordemProducao.numero_pedido}" styleClass="wh170 rSpace10"></p:inputText>
+				
+				<br/>
+				
+				<h:outputLabel value="Data Entrada:" styleClass="wh200"></h:outputLabel>
+				<h:outputLabel value="Data Entrega:" styleClass="wh200"></h:outputLabel>
+				<h:outputLabel value="Data Saída" styleClass="wh200"></h:outputLabel>
+				
+				<br/>
+				<p:calendar value="#{ordemProducao.data_entrada}" styleClass="wh170"></p:calendar>
+				<p:calendar value="#{ordemProducao.data_entrega}" styleClass="wh170"></p:calendar>
+				<p:calendar value="#{ordemProducao.data_saida}" styleClass="wh170"></p:calendar>
+				
+				<br/>
+				
+				<h:outputLabel value="Marca:" styleClass="wh405"></h:outputLabel>
+				<h:outputLabel value="Unidades:" styleClass="wh170"></h:outputLabel>
+				
+				<p:inputText value="#{ordemProducao.marca}" styleClass="wh380 rSpace10"></p:inputText>
+				<p:inputText value="#{ordemProducao.unidades}" styleClass="wh170"></p:inputText>
+				
+				<br/>
+				
+				<h:outputLabel value="Corte:" styleClass="wh200"></h:outputLabel>
+				<h:outputLabel value="Tipo:" styleClass="wh200"></h:outputLabel>
+				<h:outputLabel value="Material:" styleClass="wh200"></h:outputLabel>
+				
+				<h:selectOneMenu value="#{ordemProducao.tipo_corte}" styleClass="wh190 rSpace10">	    			
+	    			<f:selectItem itemLabel="Selecione tipo da Etiqueta" itemValue="0"/>	 	   						    						
+	    			<f:selectItem itemLabel="Dobra Meio" itemValue="Dobra Meio"/>
+	    			<f:selectItem itemLabel="Dobra Cantos" itemValue="Dobra Cantos"/>	
+	    			<f:selectItem itemLabel="Corte Especial" itemValue="Corte Especial"/>	
+	    			<f:selectItem itemLabel="Duas Dobras" itemValue="0"/>
+	    			<f:selectItem itemLabel="Galão" itemValue="0"/>
+	    			<f:selectItem itemLabel="Sem Corte" itemValue="0"/>
+	    			<f:selectItem itemLabel="Corte Normal" itemValue="0"/>
+				</h:selectOneMenu>
+				
+				<h:selectOneMenu value="#{ordemProducao.tipo}" styleClass="wh190 rSpace10">	    			
+	    			<f:selectItem itemLabel="Selecione o tipo:" itemValue="0"/>
+	    			<f:selectItem itemLabel="Tafetá" itemValue="Tafetá"/>	
+	    			<f:selectItem itemLabel="Alta Definição" itemValue="Alta Definição"/>	  						    						
+				</h:selectOneMenu>
+				
+				<h:selectOneMenu value="#{ordemProducao.material}" styleClass="wh190">	    			
+	    			<f:selectItem itemLabel="Selecione o Material:" itemValue="0"/>
+	    			<f:selectItem itemLabel="NÃO" itemValue="NÃO"/>
+	    			<f:selectItem itemLabel="Goma" itemValue="Goma"/>	
+	    			<f:selectItem itemLabel="Termo Colante" itemValue="Termo Colante"/>
+	    			<f:selectItem itemLabel="Meio Corte" itemValue="Meio Corte"/>		
+	    				    						    						
+				</h:selectOneMenu>
+				
+				<h:outputLabel value="Comprimento:" styleClass="wh200"></h:outputLabel>
+				<h:outputLabel value="Largura:" styleClass="wh200"></h:outputLabel>
+				<h:outputLabel value="Quant. Produzidas:" styleClass="wh200"></h:outputLabel>
+				
+				<p:inputText value="#{ordemProducao.comprimento}" styleClass="wh170 rSpace10"></p:inputText>
+				<p:inputText value="#{ordemProducao.largura}" styleClass="wh170 rSpace10"></p:inputText>
+				<p:inputText value="#{ordemProducao.qtd_produzida}" styleClass="wh170"></p:inputText>
+				
+
+				
+				<h:outputLabel value="Quantidade a produzir:" styleClass="wh200"></h:outputLabel>
+				<h:outputLabel value="RPM:" styleClass="wh380"></h:outputLabel>
+				
+				<p:inputText styleClass="wh170 rSpace10"></p:inputText>
+				
+				<h:selectOneMenu  styleClass="wh190 rSpace10">	    			
+	    			<f:selectItem itemLabel="Selecione o RPM" itemValue="0"/>
+					<f:selectItem itemLabel="400" itemValue="400"/>
+	    			<f:selectItem itemLabel="700" itemValue="700"/>	
+	    			<f:selectItem itemLabel="1000" itemValue="1000"/>
+	    			<f:selectItem itemLabel="1300" itemValue="1300"/>
+	    			<f:selectItem itemLabel="1600" itemValue="1600"/>
+	    			<f:selectItem itemLabel="1900" itemValue="1900"/>
+			
+
+<!-- Assim seria se fosse para listar do banco  -->
+<!-- 	    			<f:selectItems value="#{manter_maquina.listaMaquina}" var="maquina"  -->
+<!-- 						    itemValue="#{maquina.numero_maquina}"  -->
+<!-- 						    itemLabel="#{maquina.numero_maquina}" /> -->
+
+	    		</h:selectOneMenu>
+				  
+				<br/>
+				
+				<p:commandButton value="Salvar" actionListener="#{ordemProducao.salvar}" update="form"></p:commandButton>
+				<p:commandButton value="Cancelar" actionListener="#{ordemProducao.limpar}" update="form"></p:commandButton>
+			</h:form>
+			
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+
+			<div class="clr"></div>
+			
+		</div>
+		
+		<div class="clr"></div>
+		
+	</f:view>
+	
+	<f:view>
+		<ui:include src="rodape.xhtml"></ui:include>
+	</f:view>
+	
+</h:body>
+</html>
