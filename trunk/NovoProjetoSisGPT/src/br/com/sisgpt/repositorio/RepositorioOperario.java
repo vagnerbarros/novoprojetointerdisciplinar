@@ -6,6 +6,7 @@ import org.hibernate.Session;
 
 import br.com.sisgpt.dao.Dao;
 import br.com.sisgpt.dao.IDao;
+import br.com.sisgpt.dominio.Status;
 import br.com.sisgpt.entidades.Operario;
 import br.com.sisgpt.interfaces.IRepositorioOperario;
 
@@ -19,6 +20,7 @@ public class RepositorioOperario implements IRepositorioOperario {
 	}
 	
 	public void cadastrarOperario(Operario operario) {
+		operario.setStatus(Status.ATIVO);
 		dao.save(operario);
 	}
 
@@ -30,11 +32,15 @@ public class RepositorioOperario implements IRepositorioOperario {
 		dao.saveOrUpdate(operario);
 	}
 
-	public Operario procurarOperario(String codigo) {
-		return dao.load("codigo", codigo);
-	}
-
 	public List<Operario> listar() {
 		return dao.list();
+	}
+
+	public Operario logar(String login, String senha) {
+		return dao.load("login", login, "senha", senha);
+	}
+
+	public Operario procurarOperario(String id) {
+		return dao.load(id);
 	}
 }

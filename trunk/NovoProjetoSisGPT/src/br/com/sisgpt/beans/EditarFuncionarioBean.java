@@ -12,36 +12,28 @@ import br.com.sisgpt.fachada.Fachada;
 import br.com.sisgpt.util.FacesContextUtil;
 
 @ManagedBean(name="funcionarioEditar")
-//esse metodo nao deixa a sessão aberta mata na hora
 @RequestScoped
 public class EditarFuncionarioBean {
 	
 	private Operario operario;
-	private String codigo;
+	private String login;
+	private String senha;
 	private String nome;
 	private String turno;
 	private String setor;
 	private String funcao; 
 	private String observacao;
-	private Fachada fachada;
-	private Session s;
 	
-	
-
 	public EditarFuncionarioBean() {
-		// TODO Auto-generated constructor stub
 		
-		//Lista dentro do formilário Editar
 		this.operario = (Operario) FacesContextUtil.getSessionAttribute("operarioAtulizar");
-		this.fachada = Fachada.obterInstancia();
-		codigo = operario.getCodigo();
+		login = operario.getLogin();
+		senha = operario.getSenha();
 		nome = operario.getNome();
 		turno = operario.getTurno();
 		setor = operario.getSetor();
 		funcao = operario.getFuncao();
 		observacao = operario.getObservacao();
-		
-	
 	}
 	
 	public Operario getOperario() {
@@ -54,15 +46,22 @@ public class EditarFuncionarioBean {
 	}
 
 
-	public String getCodigo() {
-		return codigo;
+	public String getLogin() {
+		return login;
 	}
 
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	
+	public String getSenha() {
+		return senha;
 	}
 
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 
 	public String getNome() {
 		return nome;
@@ -112,26 +111,17 @@ public class EditarFuncionarioBean {
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
 	}
-
-
-	public Fachada getFachada() {
-		return fachada;
+	
+	public String editar(){
+		operario.setFuncao(funcao);
+		operario.setLogin(login);
+		operario.setNome(nome);
+		operario.setObservacao(observacao);
+		operario.setSenha(senha);
+		operario.setSetor(setor);
+		operario.setTurno(turno);
+		Fachada.obterInstancia().cadastroOperario().operarioAltera(operario);
+		FacesContextUtil.setMessageInformacao("INFO.:", "Atualizado com sucesso!");
+		return "cadastro_operarios_listagem";
 	}
-
-
-	public void setFachada(Fachada fachada) {
-		this.fachada = fachada;
-	}
-
-
-	public Session getS() {
-		return s;
-	}
-
-
-	public void setS(Session s) {
-		this.s = s;
-	}
-
-
-	}
+}

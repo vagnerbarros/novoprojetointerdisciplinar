@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.com.sisgpt.dao.Dao;
 import br.com.sisgpt.dao.IDao;
+import br.com.sisgpt.dominio.Status;
 import br.com.sisgpt.entidades.ControleEficiencia;
 import br.com.sisgpt.interfaces.IRepositorioControleEficiencia;
 
@@ -17,6 +18,7 @@ public class RepositorioControleEficiencia implements IRepositorioControleEficie
 	}
 	
 	public void cadastrarControleEficiencia(ControleEficiencia controleEficiencia) {
+		controleEficiencia.setStatus(Status.ATIVO);
 		dao.save(controleEficiencia);
 	}
 

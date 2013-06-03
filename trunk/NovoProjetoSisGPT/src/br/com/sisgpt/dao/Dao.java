@@ -24,133 +24,173 @@ public class Dao<T> implements IDao<T>, Serializable{
 
 	@Override
 	public void save(T bean) {
-		session = HibernateUtil.getSession();
+		session = HibernateUtil.getSessionfactory().openSession();
+		session.beginTransaction();
 		session.save(bean);
+		session.getTransaction().commit();
+		session.close();
 	}
 	
 	@Override
 	public void saveOrUpdate(T bean) {
-		session = HibernateUtil.getSession();
+		session = HibernateUtil.getSessionfactory().openSession();
+		session.beginTransaction();
 		session.saveOrUpdate(bean);
+		session.getTransaction().commit();
+		session.close();
 	}
 
 	@Override
 	public void update(T bean) {
-		session = HibernateUtil.getSession();
+		session = HibernateUtil.getSessionfactory().openSession();
+		session.beginTransaction();
 		session.update(bean);
+		session.getTransaction().commit();
+		session.close();
 	}
 
 	@Override
 	public void delete(T bean) {
-		session = HibernateUtil.getSession();
+		session = HibernateUtil.getSessionfactory().openSession();
+		session.beginTransaction();
 		session.delete(bean);
+		session.getTransaction().commit();
+		session.close();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public T load(String cpf) {
-		session = HibernateUtil.getSession();
-		return (T) session.load(classe, cpf);
+		session = HibernateUtil.getSessionfactory().openSession();
+		session.beginTransaction();
+		T retorno = (T) session.load(classe, cpf);
+		session.close();
+		return retorno;
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	public T load(int id) {
-		session = HibernateUtil.getSession();
-		return (T) session.load(classe, id);
+		session = HibernateUtil.getSessionfactory().openSession();
+		session.beginTransaction();
+		T retorno = (T) session.load(classe, id);
+		session.close();
+		return retorno;
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	public T load(Serializable bean) {
-		session = HibernateUtil.getSession();
-		return (T)session.load(classe, bean);
+		session = HibernateUtil.getSessionfactory().openSession();
+		session.beginTransaction();
+		T retorno = (T)session.load(classe, bean);
+		session.close();
+		return retorno;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public T load(String nome_campo, String valor_comparar) {
-		session = HibernateUtil.getSession();
+		session = HibernateUtil.getSessionfactory().openSession();
+		session.beginTransaction();
 		Criteria c = session.createCriteria(classe);
 		c.add(Expression.eq(nome_campo, valor_comparar));
 		c.setCacheable(true);
 		T bean = (T) c.uniqueResult();
+		session.close();
 		return bean;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> list() {
-		session = HibernateUtil.getSession();
-		return session.createCriteria(classe).list();
+		session = HibernateUtil.getSessionfactory().openSession();
+		session.beginTransaction();
+		List<T> retorno = session.createCriteria(classe).list();
+		session.close();
+		return retorno;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> listByExample(T bean) {
-		session = HibernateUtil.getSession();
+		session = HibernateUtil.getSessionfactory().openSession();
+		session.beginTransaction();
 		Example example = Example.create(bean);
 		example.enableLike(MatchMode.START);
 		example.ignoreCase();
 		example.excludeZeroes();		
-		return session.createCriteria(classe).add(example).list();
+		List<T> retorno = session.createCriteria(classe).add(example).list();
+		session.close();
+		return retorno;
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public T load(String nome_campo1, String valor_campo1, String nome_campo2,
-			String valor_campo2) {
-		session = HibernateUtil.getSession();
+	public T load(String nome_campo1, String valor_campo1, String nome_campo2, String valor_campo2) {
+		session = HibernateUtil.getSessionfactory().openSession();
+		session.beginTransaction();
 		Criteria c = session.createCriteria(classe);
 		c.add(Expression.eq(nome_campo1, valor_campo1));
 		c.add(Expression.eq(nome_campo2, valor_campo2));
 		c.setCacheable(true);
 		T bean = (T) c.uniqueResult();
+		session.close();
 		return bean ;		
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public T load(String nome_campo1, String valor_campo1, String nome_campo2,
-			Long valor_campo2) {
-		session = HibernateUtil.getSession();
+	public T load(String nome_campo1, String valor_campo1, String nome_campo2, Long valor_campo2) {
+		session = HibernateUtil.getSessionfactory().openSession();
+		session.beginTransaction();
 		Criteria c = session.createCriteria(classe);
 		c.add(Expression.eq(nome_campo1, valor_campo1));
 		c.add(Expression.eq(nome_campo2, valor_campo2));
 		c.setCacheable(true);
 		T bean = (T) c.uniqueResult();
+		session.close();
 		return bean ;		
 	}
     
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> list(String nome_campo, String valor_comparar) {
-		session = HibernateUtil.getSession();
+		session = HibernateUtil.getSessionfactory().openSession();
+		session.beginTransaction();
 		Criteria c = session.createCriteria(classe);
 		c.add(Expression.eq(nome_campo, valor_comparar));
 		c.setCacheable(true);
-		return c.list();
+		List<T> retorno = c.list();
+		session.close();
+		return retorno;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> list(String nome_campo, Long valor_comparar) {
-		session = HibernateUtil.getSession();
+		session = HibernateUtil.getSessionfactory().openSession();
+		session.beginTransaction();
 		Criteria c = session.createCriteria(classe);
 		c.add(Expression.eq(nome_campo, valor_comparar));
 		c.setCacheable(true);
-		return c.list();
+		List<T> retorno = c.list();
+		session.close();
+		return retorno;
 	}	
 	
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> list(String nome_campo, Long valor_comparar,String nome_campo2,int valor_comparar2 ) {
-		session = HibernateUtil.getSession();
+		session = HibernateUtil.getSessionfactory().openSession();
+		session.beginTransaction();
 		Criteria c = session.createCriteria(classe);
 		c.add(Expression.eq(nome_campo, valor_comparar));
 		c.add(Restrictions.not(Expression.eqProperty("quantidade", "reservado")));
 		c.setCacheable(true);
-		return c.list();
+		List<T> retorno = c.list();
+		session.close();
+		return retorno;
 	}	
 }

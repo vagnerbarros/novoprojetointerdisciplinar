@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="css/style_form.css"></link>
 </h:head>
 <h:body>
-<h:panelGroup rendered="#{funcionario.operario.funcao == 'operario' || funcionario.operario.funcao == 'administrador'}">	
+<h:panelGroup rendered="#{funcionario.operario.funcao == 'Operário' || funcionario.operario.funcao == 'Gerente'}">	
 	<f:view>
 		<ui:include src="topo_sistema.xhtml"></ui:include>
 	</f:view>

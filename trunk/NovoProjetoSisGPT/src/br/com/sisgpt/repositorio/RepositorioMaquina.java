@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.com.sisgpt.dao.Dao;
 import br.com.sisgpt.dao.IDao;
+import br.com.sisgpt.dominio.Status;
 import br.com.sisgpt.entidades.Maquina;
 import br.com.sisgpt.interfaces.IRepositorioMaquina;
 
@@ -17,6 +18,7 @@ public class RepositorioMaquina implements IRepositorioMaquina {
 	}
 	
 	public void cadastrarMaquina(Maquina maquina) {
+		maquina.setStatus(Status.ATIVO);
 		dao.save(maquina);
 	}
 

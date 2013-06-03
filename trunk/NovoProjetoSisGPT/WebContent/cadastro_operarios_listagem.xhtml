@@ -48,8 +48,8 @@
 			            </p:outputPanel>
 			        </f:facet>
 
-					<p:column headerText="Código">
-						<h:outputText value="#{operario.codigo}">
+					<p:column headerText="Login">
+						<h:outputText value="#{operario.login}">
 						</h:outputText>
 					</p:column>
 
@@ -79,20 +79,16 @@
 					</p:column>
  
 					<p:column headerText="Editar" style="width:30px;">
-					
-					<p:commandButton action="#{manter_funcionario.atualizarOperario(operario)}" value="Editar"></p:commandButton>
+					<p:commandButton action="#{manter_funcionario.atualizarOperario}" value="Editar">
+					</p:commandButton>
 					</p:column>
 					
 					<p:column headerText="Remover" style="width:30px;">
-					<p:commandButton action="#{manter_funcionario.removerOperario(operario)}" value="Excluir"></p:commandButton>
-<!--   						<a href="" class="links_edit" onclick="confirmation.show()"> </a> <img src="css/img/remove.png" alt="" height="20" /> -->
+					<p:commandButton action="#{manter_funcionario.prepararRemoverOperario}" onclick="confirmation.show()" value="Excluir"/>
 					</p:column>
-					
-
 				</p:dataTable>
-
 			</h:form>
-
+			
 			<div class="clr"></div>
 			
 			<h:form prependId="false">
@@ -105,8 +101,7 @@
 	<p:confirmDialog id="confirmDialog" message="Deseja Realmente Remover?"
 				header=".: Etigraf | Alerta :." severity="alert" widgetVar="confirmation" closable="false">
 				
-		<p:commandButton id="confirm" value="Sim" update="messages" oncomplete="confirmation.hide()"
-					style="position:relative; float:right;" />
+		<p:commandButton id="confirm" value="Sim" update="messages" oncomplete="confirmation.hide()" action="#{manter_funcionario.removerOperario}" style="position:relative; float:right;" />
 		<p:commandButton id="decline" value="Não" onclick="confirmation.hide()" type="button" style="position:relative; float:right;" /> 
 				
 	</p:confirmDialog>

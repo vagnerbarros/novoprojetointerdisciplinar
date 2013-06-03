@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.com.sisgpt.dao.Dao;
 import br.com.sisgpt.dao.IDao;
+import br.com.sisgpt.dominio.Status;
 import br.com.sisgpt.entidades.OrdemProducao;
 import br.com.sisgpt.interfaces.IRepositorioOrdemProducao;
 
@@ -17,6 +18,7 @@ public class RepositorioOrdemProducao implements IRepositorioOrdemProducao {
 	}
 	
 	public void cadastrarOrdemProducao(OrdemProducao ordemProducao) {
+		ordemProducao.setStatus(Status.ATIVO);
 		dao.save(ordemProducao);
 	}
 
