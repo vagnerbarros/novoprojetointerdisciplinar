@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<link rel="stylesheet" href="css/style.css"></link>
+	<link rel="stylesheet" href="css/style_form.css"></link>
+</h:head>
+<h:body>
+	
+	<f:view>
+		<ui:include src="topo_sistema.xhtml"></ui:include>
+	</f:view>
+	
+	<f:view>
+		
+		<div class="limite">
+			
+			<h3>Editar Máquina</h3>
+			<div class="clr"></div>
+			
+			<h:form id="form" styleClass="form_maquina">
+			<p:growl id="grol" showDetail="true"></p:growl>
+		
+				<h:outputLabel value="Número/Máquina:" styleClass="wh200"></h:outputLabel>
+				
+				<br/>
+				 
+				<p:inputText value="#{maquinaEditar.numero_maquina}" styleClass="wh130 rSpace10"></p:inputText>
+				
+				<br/>
+				
+				<h:outputLabel value="Tipo:" styleClass="wh150"></h:outputLabel>
+				<h:outputLabel value="Cabeçote" styleClass="wh150"></h:outputLabel>
+				<h:outputLabel value="RPM:" styleClass="wh150"></h:outputLabel>
+				
+				<br/>
+				
+				<!-- Tipo -->
+				<h:selectOneMenu value="#{maquinaEditar.tipo_maquina}" styleClass="wh140 rSpace10">
+	    			<f:selectItem itemLabel="Selecione o tipo:" itemValue=""/>
+	    			<f:selectItem itemLabel="Ponteira" itemValue="Ponteira"/>
+	    			<f:selectItem itemLabel="Máquina de Corte Chinesa" itemValue="Máquina de Corte Chinesa"/>
+	    			<f:selectItem itemLabel="Máquina de Corte HostQuinif" itemValue="Máquina de Corte HostQuinif"/>
+				</h:selectOneMenu>
+				
+				<!-- Cabeçote --> 
+				<h:selectOneMenu value="#{maquinaEditar.cabecote_maquina}" styleClass="wh140 rSpace10">	    			
+	    			<f:selectItem itemLabel="Selecione o Cabeçote:" itemValue=""/>
+	    			<f:selectItem itemLabel="Dobra Cantos e Dobra Meio" itemValue="Dobra Cantos e Dobra Meio"/>
+	    			<f:selectItem itemLabel="Corte Normal" itemValue="Corte Normal"/>
+	    			<f:selectItem itemLabel="Dobra Meio" itemValue="Dobra Meio"/>
+	    			<f:selectItem itemLabel="Ponteira" itemValue="Ponteira"/>
+	    			<f:selectItem itemLabel="Todos" itemValue="Todos"/>		    						    						
+				</h:selectOneMenu>
+				
+				<!-- RPM -->
+				<h:selectOneMenu value="#{maquinaEditar.rpm}" styleClass="wh140">	    			
+	    			<f:selectItem itemLabel="Selecione o RPM:" itemValue=""/>
+	    			<f:selectItem itemLabel="200" itemValue="200"/>
+	    			<f:selectItem itemLabel="400" itemValue="400"/>
+	    			<f:selectItem itemLabel="600" itemValue="600"/>
+	    			<f:selectItem itemLabel="800" itemValue="800"/>
+	    			<f:selectItem itemLabel="1000" itemValue="1000"/>    						    						
+				</h:selectOneMenu>
+
+				<br/>
+								
+				<h:outputLabel value="Observação:" styleClass="wh380"></h:outputLabel>
+				<p:inputTextarea value="#{maquinaEditar.observacao}" styleClass="wh427"  style="padding: 5px; margin-bottom: 10px;"></p:inputTextarea>
+				
+				<p:commandButton value="Salvar" action="#{maquinaEditar.atualizarMaquina}" update="form" />
+		
+			</h:form>
+			
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+
+			<div class="clr"></div>
+			
+		</div>
+		
+		<div class="clr"></div>
+		
+	</f:view>
+	
+	<f:view>
+		<ui:include src="rodape.xhtml"></ui:include>
+	</f:view>
+	
+</h:body>
+</html>

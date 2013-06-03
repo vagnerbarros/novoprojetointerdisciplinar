@@ -15,19 +15,19 @@ public class CadastroMaquina {
 	public CadastroMaquina(IRepositorioMaquina iRepositorioMaquina){
 		this.rep = iRepositorioMaquina;
 	}
-	public void maquinaCadastrar(Maquina maquina,Session s){
+	public void maquinaCadastrar(Maquina maquina){
 		rep.cadastrarMaquina(maquina);
 	}
-	public Maquina maquinaProcurar(String codigo,Session s){
+	public Maquina maquinaProcurar(String codigo){
 		return rep.procurarMaquina(codigo);
 	}
-	public void maquinaRemove(Maquina maquina, Session s) {
+	public void maquinaRemove(Maquina maquina) {
 		rep.removerMaquina(maquina);
 	}
-	public void maquinaAltera(Maquina maquina, Session s) {
+	public void maquinaAltera(Maquina maquina) {
 		rep.alterarMaquina(maquina);
 	}
-	public List<Maquina> maquinaLista(Session s) {
+	public List<Maquina> maquinaLista() {
 		return rep.listar();
 	}
 }

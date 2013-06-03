@@ -1,19 +1,10 @@
 package br.com.sisgpt.entidades;
 
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.OneToMany;
 import javax.persistence.Id;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 
 @Entity (name="operario")
 public class Operario {
@@ -46,10 +37,10 @@ public class Operario {
 	@Column(name = "status", length = 20, nullable = true)
 	private String status;
 	
-	@OneToMany(mappedBy = "operario", fetch = FetchType.EAGER)
-	@Fetch(FetchMode.SELECT)
-	@Cascade(CascadeType.ALL)
-	private Set<ControleEficiencia> controles;
+//	@OneToMany(mappedBy = "operario", fetch = FetchType.EAGER)
+//	@Fetch(FetchMode.SELECT)
+//	@Cascade(CascadeType.ALL)
+//	private Set<ControleEficiencia> controles;
 
 	public Long getId() {
 		return id;
@@ -121,13 +112,5 @@ public class Operario {
 
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-	public Set<ControleEficiencia> getControles() {
-		return controles;
-	}
-
-	public void setControles(Set<ControleEficiencia> controles) {
-		this.controles = controles;
 	}
 }
