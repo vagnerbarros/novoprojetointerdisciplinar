@@ -16,7 +16,7 @@ public interface IRepositorioOperario {
 	
 	public void alterarOperario(Operario operario);
 	
-	public Operario procurarOperario(String id);
+	public Operario procurarOperario(Long id);
 	
 	public Operario logar(String login, String senha);
 	

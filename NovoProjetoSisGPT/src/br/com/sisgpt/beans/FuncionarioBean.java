@@ -12,6 +12,7 @@ import br.com.sisgpt.util.FacesContextUtil;
 public class FuncionarioBean {
 	
 	private Operario operario;
+	
 	private String login;
 	private String senha;
 	private String nome;

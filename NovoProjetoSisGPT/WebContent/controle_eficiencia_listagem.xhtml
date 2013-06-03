@@ -45,14 +45,8 @@
 			            </p:outputPanel>
 			        </f:facet>
 			        
-			        <p:column headerText="Código">
-						<h:outputText value="">
-						</h:outputText>
-					</p:column>
-			        
-
 					<p:column headerText="Máquina">
-						<h:outputText value="#{eficiencia.numero_maquina}">
+						<h:outputText value="#{eficiencia.maquina.numero_maquina}">
 						</h:outputText>
 					</p:column>
 
@@ -67,7 +61,7 @@
 					</p:column>
 
 					<p:column headerText="Responsável">
-						<h:outputText value="#{eficiencia.operario}">
+						<h:outputText value="#{eficiencia.operario.nome}">
 						</h:outputText>
 					</p:column>
 
@@ -82,15 +76,11 @@
 					</p:column>
 
 					<p:column headerText="Editar" style="width:30px;">
-					<p:commandButton action="#{manter_funcionario.atualizarOperario(operario)}" value="Editar"></p:commandButton>
-					
-<!-- 						<a href="cadastro_maquinas_novo.jsf" class="links_edit"> <img src="css/img/edit.png" alt="" height="20" /> </a> -->
+					<p:commandButton action="#{manter_controleEficiencia.atualizarControleEficiencia}" value="Editar" />
 					</p:column>
 					
 					<p:column headerText="Remover" style="width:30px;">
-					<p:commandButton action="#{manter_funcionario.removerOperario(operario)}" value="Excluir"></p:commandButton>
-					
-<!-- 						<a href="" class="links_edit" onclick="confirmation.show()"> <img src="css/img/remove.png" alt="" height="20" /> </a> -->
+					<p:commandButton action="#{manter_controleEficiencia.prepararRemoverEficiencia}" onclick="confirmation.show()" value="Excluir" />
 					</p:column>
 					
 
@@ -110,8 +100,7 @@
 	<p:confirmDialog id="confirmDialog" message="Deseja Realmente Remover?"
 				header=".: Etigraf | Alerta :." severity="alert" widgetVar="confirmation" closable="false">
 				
-		<p:commandButton id="confirm" value="Sim" update="messages" oncomplete="confirmation.hide()"
-					style="position:relative; float:right;" />
+		<p:commandButton id="confirm" value="Sim" update="messages" oncomplete="confirmation.hide()" action="#{manter_controleEficiencia.removerEficiencia}" style="position:relative; float:right;" />
 		<p:commandButton id="decline" value="Não" onclick="confirmation.hide()" type="button" style="position:relative; float:right;" /> 
 				
 	</p:confirmDialog>

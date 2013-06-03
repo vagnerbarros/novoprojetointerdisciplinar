@@ -16,16 +16,16 @@ public class CadastroOrdemProducao {
 		this.rep = iRepositorioOrdemProducao;
 	}
 
-	public void ordemProducaoCadastrar(OrdemProducao ordemProducao,Session s){
+	public void ordemProducaoCadastrar(OrdemProducao ordemProducao){
 		rep.cadastrarOrdemProducao(ordemProducao);
 	}
-	public OrdemProducao ordemProducaoProcurar(String codigo,Session s){
+	public OrdemProducao ordemProducaoProcurar(String codigo){
 		return rep.procurarOrdemProducao(codigo);
 	}
-	public void ordemProducaoRemove(OrdemProducao ordemProducao, Session s) {
+	public void ordemProducaoRemove(OrdemProducao ordemProducao) {
 		rep.removerOrdemProducao(ordemProducao);
 	} 
-	public void ordemProducaoAltera(OrdemProducao ordemProducao, Session s) {
+	public void ordemProducaoAltera(OrdemProducao ordemProducao) {
 		rep.alterarOrdemProducao(ordemProducao);
 	}
 	public List<OrdemProducao> ordemProducaoLista() {

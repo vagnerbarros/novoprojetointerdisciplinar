@@ -20,7 +20,7 @@ public class CadastroOperario {
 		rep.cadastrarOperario(operario);
 	}
 
-	public Operario operarioProcurar(String id){
+	public Operario operarioProcurar(Long id){
 		return rep.procurarOperario(id);
 	}
 

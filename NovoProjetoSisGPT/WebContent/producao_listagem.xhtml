@@ -25,7 +25,7 @@
 			<h:form id="form"  styleClass="form_ordem">
 
 				<p:dataTable id="dataTable" var="producao" styleClass="tabela_listagem"
-					value="#{manter_ordemproducao.listOrdemProducao}" widgetVar="producaoTable" 
+					value="#{manter_ordemproducao.listaOrdemProducao}" widgetVar="producaoTable" 
 					paginator="true" rows="5"
 					selection="#{manter_ordemproducao.producao}"
 					selectionMode="single"
@@ -76,14 +76,11 @@
 					</p:column>
 
 					<p:column headerText="Editar" style="width:30px;">
-					<p:commandButton value="Editar"></p:commandButton>
-					
-<!-- 						<a href="cadastro_maquinas_novo.jsf" class="links_edit"> <img src="css/img/edit.png" alt="" height="20" /> </a> -->
+						<p:commandButton value="Editar" action="#{manter_ordemproducao.atualizarOrdem}"/>
 					</p:column>
 					
 					<p:column headerText="Remover" style="width:30px;">
-					<p:commandButton value="Excluir"></p:commandButton>
-<!-- 						<a href="" class="links_edit" onclick="confirmation.show()"> <img src="css/img/remove.png" alt="" height="20" /> </a> -->
+						<p:commandButton action="#{manter_ordemproducao.prepararRemoverOrdem}" onclick="confirmation.show()" value="Excluir" />
 					</p:column>
 					
 
@@ -103,8 +100,7 @@
 	<p:confirmDialog id="confirmDialog" message="Deseja Realmente Remover?"
 				header=".: Etigraf | Alerta :." severity="alert" widgetVar="confirmation" closable="false">
 				
-		<p:commandButton id="confirm" value="Sim" update="messages" oncomplete="confirmation.hide()"
-					style="position:relative; float:right;" />
+		<p:commandButton id="confirm" value="Sim" update="messages" oncomplete="confirmation.hide()" action="#{manter_ordemproducao.removerOrdem}" style="position:relative; float:right;" />
 		<p:commandButton id="decline" value="Não" onclick="confirmation.hide()" type="button" style="position:relative; float:right;" /> 
 				
 	</p:confirmDialog>
