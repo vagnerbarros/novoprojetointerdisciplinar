@@ -1,7 +1,10 @@
 package br.com.sisgpt.dao;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
+
+import br.com.sisgpt.entidades.OrdemProducao;
 
 public interface IDao<T> {
 
@@ -34,6 +37,6 @@ public interface IDao<T> {
 	List<T> list(String nome_campo, Long valor_comparar);
 	
 	public List<T> list(String nome_campo, Long valor_comparar,String nome_campo2,int valor_comparar2 );
-	
-	
+
+	List<T> filtroBetween(String string, Date data_inicial,	Date data_final);
 }
