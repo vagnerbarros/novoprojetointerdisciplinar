@@ -20,8 +20,8 @@ public class CadastroOperario {
 		rep.cadastrarOperario(operario);
 	}
 
-	public Operario operarioProcurar(String codigo){
-		return rep.procurarOperario(codigo);
+	public Operario operarioProcurar(String id){
+		return rep.procurarOperario(id);
 	}
 
 	public void operarioRemove(Operario operario) {
@@ -35,5 +35,9 @@ public class CadastroOperario {
 
 	public List<Operario> operarioLista() {
 		return rep.listar();
+	}
+	
+	public Operario logar(String login, String senha){
+		return rep.logar(login, senha);
 	}
 }

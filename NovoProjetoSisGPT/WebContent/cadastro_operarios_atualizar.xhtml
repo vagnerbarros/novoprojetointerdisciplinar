@@ -25,8 +25,11 @@
 			<h:form id="form" styleClass="form_funcionario">
 			<p:growl id="grol" showDetail="true"></p:growl>
 		
-		        <h:outputLabel value="Código:" styleClass="wh380"></h:outputLabel>
-				<p:inputText value="#{funcionarioEditar.codigo}" styleClass="wh170"></p:inputText>
+		        <h:outputLabel value="Login:" styleClass="wh200"></h:outputLabel>
+				<p:inputText value="#{funcionarioEditar.login}" styleClass="wh170"></p:inputText>
+				
+				 <h:outputLabel value="Senha:" styleClass="wh200"></h:outputLabel>
+				<p:password value="#{funcionarioEditar.senha}" styleClass="wh170" />
 				
 				<h:outputLabel value="Nome:" styleClass="wh380"></h:outputLabel>
 				<p:inputText value="#{funcionarioEditar.nome}" styleClass="wh380"></p:inputText>
@@ -40,30 +43,30 @@
 	    			<f:selectItem itemLabel="B" itemValue="B"/>
 	    			<f:selectItem itemLabel="C" itemValue="C"/>
 	    			<f:selectItem itemLabel="D" itemValue="D"/>
-	    			<f:selectItem itemLabel="COMERCIAL" itemValue="COMERCIAL"/>
+	    			<f:selectItem itemLabel="COMERCIAL" itemValue="Comercial"/>
 				</h:selectOneMenu>
 
 				
 				<h:selectOneMenu value="#{funcionarioEditar.setor}" styleClass="wh190">
 	    			<f:selectItem itemLabel="Selecione o setor:" itemValue="0"/>
-	    			<f:selectItem itemLabel="Acabamento" itemValue="acabamento"/>
-	    			<f:selectItem itemLabel="Tecelagem" itemValue="tecelagem"/>
-	    			<f:selectItem itemLabel="Laser" itemValue="laser"/>
-	    			<f:selectItem itemLabel="Ponteira" itemValue="ponteira"/>	    						    						
+	    			<f:selectItem itemLabel="Acabamento" itemValue="Acabamento"/>
+	    			<f:selectItem itemLabel="Tecelagem" itemValue="Tecelagem"/>
+	    			<f:selectItem itemLabel="Laser" itemValue="Laser"/>
+	    			<f:selectItem itemLabel="Ponteira" itemValue="Ponteira"/>	    						    						
 				</h:selectOneMenu>
 				
 				<h:outputLabel value="Função:" styleClass="wh380"></h:outputLabel>
 				
 				<h:selectOneMenu value="#{funcionarioEditar.funcao}" styleClass="wh190">
 	    			<f:selectItem itemLabel="Selecione o setor:" itemValue="0"/>
-	    			<f:selectItem itemLabel="Gerente" itemValue="administrador"/>
-	    			<f:selectItem itemLabel="Operario" itemValue="operario"/>
+	    			<f:selectItem itemLabel="Gerente" itemValue="Gerente"/>
+	    			<f:selectItem itemLabel="Operario" itemValue="Operário"/>
 				</h:selectOneMenu>
 				
 				<h:outputLabel value="Observação:" styleClass="wh380"></h:outputLabel>
-				<p:inputTextarea styleClass="wh380" value="#{observacao}" style="padding: 5px; margin-bottom: 10px;"></p:inputTextarea>
+				<p:inputTextarea styleClass="wh380" value="#{funcionarioEditar.observacao}" style="padding: 5px; margin-bottom: 10px;"></p:inputTextarea>
 				
-				<p:commandButton value="Atualizar" actionListener="#{manter_funcionario.atualizarOperario}" update="form"></p:commandButton>
+				<p:commandButton value="Atualizar" action="#{funcionarioEditar.editar}" update="form"></p:commandButton>
 		
 			</h:form>
 			

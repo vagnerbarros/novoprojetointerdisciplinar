@@ -3,10 +3,9 @@ package br.com.sisgpt.beans;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-
 import javax.faces.bean.SessionScoped;
-
-import org.hibernate.Session;
+import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
 
 import br.com.sisgpt.entidades.Operario;
 import br.com.sisgpt.fachada.Fachada;
@@ -15,54 +14,46 @@ import br.com.sisgpt.util.FacesContextUtil;
 @ManagedBean(name="manter_funcionario")
 @SessionScoped
 public class MFuncionarioBean {
-	@SuppressWarnings("unused")
-	private List<Operario> listaOperarios;
+
+	private DataModel<Operario> listaOperarios;
 	private Fachada fachada;
-	private Session s;
 	private Operario operario;
-	
-	
+
+
 	public MFuncionarioBean() {
-		// TODO Auto-generated constructor stub
 		this.fachada = Fachada.obterInstancia();
+		List<Operario> listaTempo = fachada.cadastroOperario().operarioLista();
+		listaOperarios = new ListDataModel<Operario>(listaTempo);
 	}
 
-	//Metodo Lista o operario
-	public List<Operario> getListaOperarios() {
-		s = FacesContextUtil.getRequestSession();
-		return fachada.operarioLista(s);
-		
+	public DataModel<Operario> getListaOperarios() {
+		List<Operario> listaTempo = fachada.cadastroOperario().operarioLista();
+		listaOperarios = new ListDataModel<Operario>(listaTempo);
+		return listaOperarios;
+
 	}
 
-	public void setListaOperarios(List<Operario> listaOperarios) {
+	public void setListaOperarios(DataModel<Operario> listaOperarios) {
 		this.listaOperarios = listaOperarios;
 	}
-	 
+
+
+	public String atualizarOperario(){
+		operario = (Operario) listaOperarios.getRowData();
+		FacesContextUtil.setSessionAttribute("operarioAtulizar", operario);
+		return "cadastro_operarios_atualizar";
+	}
+
+	public void prepararRemoverOperario(){
+		operario = (Operario) listaOperarios.getRowData();
+	}
 	
-	//Metodo atualizar Operario
-	public String atualizarOperario(Operario operario){
-		try {
-			fachada.operarioAltera(operario, s);
-			FacesContextUtil.setSessionAttribute("operarioAtulizar", operario);
-			
-		} catch (Exception e) {
-			// TODO: handle exception
+	public String removerOperario(){
+		if(operario != null){
+			Fachada.obterInstancia().cadastroOperario().operarioRemove(operario);
 		}
-//		FacesContextUtil.setMessageInformacao("INFO.:", "Alterado com sucesso!");
-//		FacesContextUtil.setMessageErro("Erro", "Execução na concluída!!");
-	
-		return "cadastro_operarios_atualizar.xhtml";
-
+		return "cadastro_operarios_listagem";
 	}
-	
-	public void removerOperario(Operario operario){
-//		fachada.operarioRemove(operario, s);
-//		FacesContextUtil.setMessageInformacao("Remov:", "Removido com sucesso");
-	}
-
-	
-	
-	
 
 	public Operario getOperario() {
 		return operario;
@@ -71,5 +62,4 @@ public class MFuncionarioBean {
 	public void setOperario(Operario operario) {
 		this.operario = operario;
 	}
-
 }

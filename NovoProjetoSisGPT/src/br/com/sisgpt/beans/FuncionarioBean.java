@@ -3,8 +3,6 @@ package br.com.sisgpt.beans;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import org.hibernate.Session;
-
 import br.com.sisgpt.entidades.Operario;
 import br.com.sisgpt.fachada.Fachada;
 import br.com.sisgpt.util.FacesContextUtil;
@@ -14,37 +12,37 @@ import br.com.sisgpt.util.FacesContextUtil;
 public class FuncionarioBean {
 	
 	private Operario operario;
-	private String codigo;
+	private String login;
+	private String senha;
 	private String nome;
 	private String turno;
 	private String setor;
 	private String funcao; 
 	private String observacao;
 	private Fachada fachada;
-	private Session s;
 	
 	
 	public FuncionarioBean() {
-		// TODO Auto-generated constructor stub
 		this.operario = (Operario) FacesContextUtil.getSessionAttribute("operario");
 		this.fachada = Fachada.obterInstancia();
 	} 
 	
 	
 	public void salvar(){
-		s = FacesContextUtil.getRequestSession();
 		try{
-			if(codigo.equals("") || nome.equals("")){
+			if(login.equals("") || nome.equals("")){
 			  FacesContextUtil.setMessageInformacao("ERRO", "Há campos de preencimento obrigatório vasios!");
 			}else {
 				Operario operario = new Operario();
-				operario.setCodigo(codigo);
-				operario.setNome(nome);
 				operario.setFuncao(funcao);
+				operario.setLogin(login);
+				operario.setNome(nome);
 				operario.setObservacao(observacao);
+				operario.setSenha(senha);
 				operario.setSetor(setor);
 				operario.setTurno(turno);
-				fachada.operarioCadastrar(operario, s);
+				
+				fachada.cadastroOperario().operarioCadastrar(operario);
 				FacesContextUtil.setMessageInformacao("INFO.:", "Cadastrado com sucesso!");
 				limpar();
 				
@@ -57,14 +55,12 @@ public class FuncionarioBean {
 	
 	
 	public void limpar(){
-		 codigo = "";
+		 login = "";
 		 nome = "";
 		 turno = "";
 		 setor = "";
 		 funcao = "";
 		 observacao = "";
-		 
-	
 	}
 	
 	public Operario getOperario() {
@@ -74,11 +70,17 @@ public class FuncionarioBean {
 	public void setOperario(Operario operario) {
 		this.operario = operario;
 	}
-	public String getCodigo() {
-		return codigo;
+	public String getLogin() {
+		return login;
 	}
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 	public String getNome() {
 		return nome;
@@ -110,7 +112,4 @@ public class FuncionarioBean {
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
 	}
-	
-	
-
 }

@@ -10,7 +10,7 @@
 </h:head>
 <h:body>
 
-<h:panelGroup rendered="#{funcionario.operario.funcao == 'operario' || funcionario.operario.funcao == 'administrador'}">
+<h:panelGroup rendered="#{funcionario.operario.funcao == 'Operário' || funcionario.operario.funcao == 'Gerente'}">
 	<f:view>
 
 		<div class="topo">
@@ -40,9 +40,9 @@
 		
 		<p:menubar style="font-size:14px; border:none;">
 	 
-				<p:menuitem value="Início " url="home.jsf" icon="ui-icon-home" rendered="#{funcionario.operario.funcao == 'operario' || funcionario.operario.funcao == 'administrador'}"/>
+				<p:menuitem value="Início " url="home.jsf" icon="ui-icon-home" rendered="#{funcionario.operario.funcao == 'Operário' || funcionario.operario.funcao == 'Gerente'}"/>
 
-				<p:submenu label="Produção" icon="ui-icon-contact" rendered="#{funcionario.operario.funcao == 'operario' || funcionario.operario.funcao == 'administrador'}">
+				<p:submenu label="Produção" icon="ui-icon-contact" rendered="#{funcionario.operario.funcao == 'Operário' || funcionario.operario.funcao == 'Gerente'}">
 					
 					
 					<p:submenu label="Ordem de Produção">
@@ -56,7 +56,7 @@
 					</p:submenu>
 
 				</p:submenu>
-				<p:submenu label="Cadastros " icon="ui-icon-document" rendered="#{funcionario.operario.funcao == 'administrador'}">
+				<p:submenu label="Cadastros " icon="ui-icon-document" rendered="#{funcionario.operario.funcao == 'Gerente'}">
 					
 					<p:submenu label="Operários">
 						<p:menuitem value="Novo" url="cadastro_operarios_novo.jsf" icon="ui-icon-plus" />
@@ -70,11 +70,11 @@
 				
 				</p:submenu>
 					
-				<p:menuitem value="Sobre " url="home.jsf" icon="ui-icon-notice" rendered="#{funcionario.operario.funcao == 'administrador'}"/>
+				<p:menuitem value="Sobre " url="home.jsf" icon="ui-icon-notice" rendered="#{funcionario.operario.funcao == 'Gerente'}"/>
 				
-				<p:menuitem value="Relatórios " url="relatorios.jsf" icon="ui-icon-signal" rendered="#{funcionario.operario.funcao == 'administrador'}"/>
+				<p:menuitem value="Relatórios " url="relatorios.jsf" icon="ui-icon-signal" rendered="#{funcionario.operario.funcao == 'Gerente'}"/>
 				
-				<p:menuitem value="Sair " url="index.jsf" icon="ui-icon-power" rendered="#{funcionario.operario.funcao == 'operario' || funcionario.operario.funcao == 'administrador'}"/>
+				<p:menuitem value="Sair " url="index.jsf" icon="ui-icon-power" rendered="#{funcionario.operario.funcao == 'Operário' || funcionario.operario.funcao == 'Gerente'}"/>
 
 		</p:menubar>
 		
