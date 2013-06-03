@@ -1,9 +1,7 @@
 package br.com.sisgpt.cadastros;
 
+import java.util.Date;
 import java.util.List;
-
-import org.hibernate.Session;
-
 
 import br.com.sisgpt.entidades.OrdemProducao;
 import br.com.sisgpt.interfaces.IRepositorioOrdemProducao;
@@ -30,5 +28,8 @@ public class CadastroOrdemProducao {
 	}
 	public List<OrdemProducao> ordemProducaoLista() {
 		return rep.listarOrdemProducao();
+	}
+	public List<OrdemProducao> ordemProducaoFiltrar(Date data_inicial, Date data_final){
+		return rep.filtrar(data_inicial, data_final);
 	}
 }

@@ -25,14 +25,65 @@
 			
 			<h:form styleClass="form_relatorio">
 				
-				<h:outputLabel value="Data Inicial:" styleClass="wh154"></h:outputLabel>
-				<h:outputLabel value="Data Final:" styleClass="wh154"></h:outputLabel>
+				<h:outputLabel value="Data Inicial:" styleClass="wh154"/>
+				<p:calendar value="#{relatorio.data_inicial}" styleClass="wh132"/>
+
+				<h:outputLabel value="Data Final:" styleClass="wh154"/>
+				<p:calendar value="#{relatorio.data_final}" styleClass="wh132"/>
 				
-				<p:inputMask mask="99/99/9999" styleClass="wh132 rSpace10"></p:inputMask>
-				<p:inputMask mask="99/99/9999" styleClass="wh132"></p:inputMask>
-				
-				<p:commandButton value="Gerar Relatório"></p:commandButton>
+				<p:commandButton value="Gerar Relatório" action="relatorio.filtrar">
+				</p:commandButton>
 		
+			</h:form>
+			
+			<h:form id="form" prependId="true">
+
+				<p:dataTable id="dataTableRelatorio" var="ordem" styleClass="tabela_listagem"
+					value="#{relatorio.listaOrdem}" widgetVar="Ordem" filteredValue="#{relatorio.lista}"
+					paginator="true" rows="5"
+					selection="#{relatorio.ordem}"
+					selectionMode="single"
+					emptyMessage=".: Nenhuma Ordem Encontrada .:"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15" rowKey="#{ordem}">
+
+					<p:column headerText="Nº Pedido">
+						<h:outputText value="#{ordem.numero_pedido}">
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Data Entrada">
+						<h:outputText value="#{ordem.data_entrada}">
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Data Entrega">
+						<h:outputText value="#{ordem.data_entrega}">
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Data Saída">
+						<h:outputText value="#{ordem.data_saida}">
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Marca">
+						<h:outputText value="#{ordem.marca}">
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Unidades">
+						<h:outputText value="#{ordem.unidades}">
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Detalhar" style="width:30px;">
+						<p:commandButton value="Detalhar" action="#{relatorio.detalhar}"/>
+					</p:column>
+					
+
+				</p:dataTable>
+
 			</h:form>
 			
 			<br/>

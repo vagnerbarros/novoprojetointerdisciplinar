@@ -1,5 +1,6 @@
 package br.com.sisgpt.repositorio;
 
+import java.util.Date;
 import java.util.List;
 
 import br.com.sisgpt.dao.Dao;
@@ -36,5 +37,9 @@ public class RepositorioOrdemProducao implements IRepositorioOrdemProducao {
 
 	public List<OrdemProducao> listarOrdemProducao() {
 		return dao.list();
+	}
+
+	public List<OrdemProducao> filtrar(Date data_inicial, Date data_final) {
+		return dao.filtroBetween("data_saida", data_inicial, data_final);
 	}
 }

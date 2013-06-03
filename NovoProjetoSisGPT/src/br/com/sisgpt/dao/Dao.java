@@ -1,6 +1,7 @@
 package br.com.sisgpt.dao;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -10,6 +11,7 @@ import org.hibernate.criterion.Expression;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
+import br.com.sisgpt.entidades.OrdemProducao;
 import br.com.sisgpt.util.HibernateUtil;
 
 public class Dao<T> implements IDao<T>, Serializable{
@@ -188,6 +190,17 @@ public class Dao<T> implements IDao<T>, Serializable{
 		Criteria c = session.createCriteria(classe);
 		c.add(Expression.eq(nome_campo, valor_comparar));
 		c.add(Restrictions.not(Expression.eqProperty("quantidade", "reservado")));
+		c.setCacheable(true);
+		List<T> retorno = c.list();
+		session.close();
+		return retorno;
+	}
+
+	public List<T> filtroBetween(String campo, Date data_inicial, Date data_final) {
+		session = HibernateUtil.getSessionfactory().openSession();
+		session.beginTransaction();
+		Criteria c = session.createCriteria(classe);
+		c.add(Expression.between(campo, data_inicial, data_final));
 		c.setCacheable(true);
 		List<T> retorno = c.list();
 		session.close();
