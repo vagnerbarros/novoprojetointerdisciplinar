@@ -15,7 +15,7 @@ public interface IRepositorioMaquina {
 	
 	public void alterarMaquina(Maquina maquina);
 	
-	public Maquina procurarMaquina(String codigo);
+	public Maquina procurarMaquina(Long id);
 	
 	public List<Maquina> listar();
 

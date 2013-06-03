@@ -18,8 +18,8 @@ public class CadastroMaquina {
 	public void maquinaCadastrar(Maquina maquina){
 		rep.cadastrarMaquina(maquina);
 	}
-	public Maquina maquinaProcurar(String codigo){
-		return rep.procurarMaquina(codigo);
+	public Maquina maquinaProcurar(Long id){
+		return rep.procurarMaquina(id);
 	}
 	public void maquinaRemove(Maquina maquina) {
 		rep.removerMaquina(maquina);

@@ -12,9 +12,9 @@ import br.com.sisgpt.entidades.Operario;
 import br.com.sisgpt.fachada.Fachada;
 import br.com.sisgpt.util.FacesContextUtil;
 
-@ManagedBean(name="controleEficiencia")
+@ManagedBean(name="eficienciaEditar")
 @SessionScoped
-public class ControleEficienciaBean {
+public class EditarControleEficienciaBean {
 
 	private ControleEficiencia eficiencia;
 
@@ -24,19 +24,24 @@ public class ControleEficienciaBean {
 	private Date data_parada;
 	private String descricao_problema;
 	private String tipo_corte;
-	private Fachada fachada;
 
-	public ControleEficienciaBean(){
-		this.fachada = Fachada.obterInstancia();
+	public EditarControleEficienciaBean(){
+		eficiencia = (ControleEficiencia) FacesContextUtil.getSessionAttribute("eficienciaAtulizar");
+		maquina = eficiencia.getMaquina().getId();
+		operario = eficiencia.getOperario().getId();
+		data_funcionamento = eficiencia.getData_funcionamento();
+		data_parada = eficiencia.getData_parada();
+		descricao_problema = eficiencia.getDescricao_problema();
+		tipo_corte = eficiencia.getTipo_corte();
 	}
 
-	public void salvarEficiencia(){
+	public String atualizarEficiencia(){
+		
 		if(descricao_problema.equals("")){
 			FacesContextUtil.setMessageInformacao("ERRO", "Há campos de preencimento obrigatório vasios!");
+			return "";
 		}else{
 			ControleEficiencia controle = new ControleEficiencia();
-		//	Operario o = fachada.cadastroOperario().operarioProcurar(operario);
-		//	Maquina m = fachada.cadastroMaquina().maquinaProcurar(maquina);
 			Operario o = new Operario();
 			o.setId(operario);
 			Maquina m = new Maquina();
@@ -49,9 +54,10 @@ public class ControleEficienciaBean {
 			controle.setTipo_corte(tipo_corte);
 			controle.setDescricao_problema(descricao_problema);
 
-			fachada.cadastroControleEficiencia().controleEficienciaCadastrar(controle);
-			FacesContextUtil.setMessageInformacao("INFO", "Cadastrado com sucesso!");
+			Fachada.obterInstancia().cadastroControleEficiencia().controleEficienciaAltera(controle);
+			FacesContextUtil.setMessageInformacao("INFO", "Atualizado com sucesso!");
 			limpar();
+			return "controle_eficiencia_listagem";
 		}
 	}
 

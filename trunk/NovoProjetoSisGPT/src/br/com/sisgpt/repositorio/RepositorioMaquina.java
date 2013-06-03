@@ -22,8 +22,8 @@ public class RepositorioMaquina implements IRepositorioMaquina {
 		dao.save(maquina);
 	}
 
-	public Maquina procurarMaquina(String codigo) {
-		return dao.load("codigo", codigo);
+	public Maquina procurarMaquina(Long id) {
+		return dao.load(id);
 	}
 
 	public void removerMaquina(Maquina maquina) {

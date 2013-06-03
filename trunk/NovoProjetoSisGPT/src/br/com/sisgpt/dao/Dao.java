@@ -70,7 +70,7 @@ public class Dao<T> implements IDao<T>, Serializable{
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public T load(int id) {
+	public T load(Long id) {
 		session = HibernateUtil.getSessionfactory().openSession();
 		session.beginTransaction();
 		T retorno = (T) session.load(classe, id);
@@ -192,5 +192,5 @@ public class Dao<T> implements IDao<T>, Serializable{
 		List<T> retorno = c.list();
 		session.close();
 		return retorno;
-	}	
+	}
 }

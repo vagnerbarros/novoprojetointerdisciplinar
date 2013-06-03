@@ -22,13 +22,13 @@
 			<h3>Ordem de Produção - Nova</h3>
 			<div class="clr"></div>
 			
-			<h:form styleClass="form_ordem">
+			<h:form id="form" styleClass="form_ordem">
 		
 				<h:outputLabel value="Número Pedido:" styleClass="wh200"></h:outputLabel>
 				
 				<br/>
 				
-				<p:inputText styleClass="wh170 rSpace10"></p:inputText>
+				<p:inputText value="#{ordemProducao.numero_pedido}" styleClass="wh170 rSpace10"></p:inputText>
 				
 				<br/>
 				
@@ -38,17 +38,17 @@
 				
 				<br/>
 				
-				<p:inputMask mask="99/99/9999" styleClass="wh170 rSpace10"></p:inputMask>
-				<p:inputMask mask="99/99/9999" styleClass="wh170 rSpace10"></p:inputMask>
-				<p:inputMask mask="99/99/9999" styleClass="wh170"></p:inputMask>
+				<p:calendar value="#{ordemProducao.data_entrada}" styleClass="wh170 " />
+				<p:calendar value="#{ordemProducao.data_entrega}" styleClass="wh170 " />
+				<p:calendar value="#{ordemProducao.data_saida}" styleClass="wh170" />
 				
 				<br/>
 				
 				<h:outputLabel value="Marca:" styleClass="wh405"></h:outputLabel>
 				<h:outputLabel value="Unidades:" styleClass="wh170"></h:outputLabel>
 				
-				<p:inputText styleClass="wh380 rSpace10"></p:inputText>
-				<p:inputText styleClass="wh170"></p:inputText>
+				<p:inputText value="#{ordemProducao.marca}" styleClass="wh380 rSpace10"></p:inputText>
+				<p:inputText value="#{ordemProducao.unidades}" styleClass="wh170"></p:inputText>
 				
 				<br/>
 				
@@ -56,37 +56,36 @@
 				<h:outputLabel value="Tipo:" styleClass="wh200"></h:outputLabel>
 				<h:outputLabel value="Material:" styleClass="wh200"></h:outputLabel>
 				
-				<h:selectOneMenu styleClass="wh190 rSpace10">	    			
-	    			<f:selectItem itemLabel="Dobra Meio" itemValue="0"/>
-	    			<f:selectItem itemLabel="Dobra Cantos" itemValue="0"/>	
-	    			<f:selectItem itemLabel="Corte Especial" itemValue="0"/>	
-	    			<f:selectItem itemLabel="Duas Dobras" itemValue="0"/>
-	    			<f:selectItem itemLabel="Galão" itemValue="0"/>
-	    			<f:selectItem itemLabel="Sem Corte" itemValue="0"/>
-	    			<f:selectItem itemLabel="Corte Normal" itemValue="0"/>
+				<h:selectOneMenu value="#{ordemProducao.tipo_corte}" styleClass="wh190 rSpace10">		
 	    			<f:selectItem itemLabel="Selecione tipo da Etiqueta" itemValue="0"/>	 	   						    						
+	    			<f:selectItem itemLabel="Dobra Meio" itemValue="Dobra Meio"/>
+	    			<f:selectItem itemLabel="Dobra Cantos" itemValue="Dobra Cantos"/>	
+	    			<f:selectItem itemLabel="Corte Especial" itemValue="Corte Especial"/>	
+	    			<f:selectItem itemLabel="Duas Dobras" itemValue="Duas Dobras"/>
+	    			<f:selectItem itemLabel="Galão" itemValue="Galão"/>
+	    			<f:selectItem itemLabel="Sem Corte" itemValue="Sem Corte"/>
+	    			<f:selectItem itemLabel="Corte Normal" itemValue="Corte Normal"/>
 				</h:selectOneMenu>
 				
-				<h:selectOneMenu styleClass="wh190 rSpace10">	    			
-	    			<f:selectItem itemLabel="Tafetá" itemValue="0"/>	
-	    			<f:selectItem itemLabel="Alta Definição" itemValue="0"/>	  						    						
+				<h:selectOneMenu value="#{ordemProducao.tipo}" styleClass="wh190 rSpace10">	    			
 	    			<f:selectItem itemLabel="Selecione o tipo:" itemValue="0"/>
+	    			<f:selectItem itemLabel="Tafetá" itemValue="Tafetá"/>	
+	    			<f:selectItem itemLabel="Alta Definição" itemValue="Alta Definição"/>	  						    						
 				</h:selectOneMenu>
 				
-				<h:selectOneMenu styleClass="wh190">	    			
-	    			<f:selectItem itemLabel="Goma" itemValue="0"/>	
-	    			<f:selectItem itemLabel="Termo Colante" itemValue="0"/>	
+				<h:selectOneMenu value="#{ordemProducao.material}" styleClass="wh190">	    			
 	    			<f:selectItem itemLabel="Selecione o Material:" itemValue="0"/>
-	    				    						    						
+	    			<f:selectItem itemLabel="Goma" itemValue="Goma"/>	
+	    			<f:selectItem itemLabel="Termo Colante" itemValue="Termo Colante"/>	
 				</h:selectOneMenu>
 				
 				<h:outputLabel value="Comprimento:" styleClass="wh200"></h:outputLabel>
 				<h:outputLabel value="Largura:" styleClass="wh200"></h:outputLabel>
 				<h:outputLabel value="Quant. Produzidas:" styleClass="wh200"></h:outputLabel>
 				
-				<p:inputText styleClass="wh170 rSpace10"></p:inputText>
-				<p:inputText styleClass="wh170 rSpace10"></p:inputText>
-				<p:inputText styleClass="wh170"></p:inputText>
+				<p:inputText value="#{ordemProducao.comprimento}" styleClass="wh170 rSpace10"></p:inputText>
+				<p:inputText value="#{ordemProducao.largura}" styleClass="wh170 rSpace10"></p:inputText>
+				<p:inputText value="#{ordemProducao.qtd_produzida}" styleClass="wh170"></p:inputText>
 				
 				<br/>
 				
@@ -95,17 +94,16 @@
 				
 				<p:inputText styleClass="wh170 rSpace10"></p:inputText>
 				
-				<h:selectOneMenu styleClass="wh190 rSpace10">	    			
+				<h:selectOneMenu styleClass="wh190 rSpace10" >	    			
 	    			<f:selectItem itemLabel="Select" itemValue="0"/>
-	    			<f:selectItems value="#{manter_maquina.listMaquinas}" var="maquina" 
-						    itemValue="#{maquina.numero_maquina}" 
-						    itemLabel="#{maquina.numero_maquina}" />
+	    			<f:selectItems value="#{manter_maquina.listaMaquina}" var="maquina" 
+	    				itemValue="#{maquina.id}" itemLabel="#{maquina.rpm}" />
 	    		</h:selectOneMenu>
 				
 				<br/>
 				
-				<p:commandButton value="Salvar"></p:commandButton>
-		
+				<p:commandButton  value="Salvar" action="#{ordemProducao.salvar}" update="form"/>
+				<p:commandButton value="Limpar" action="#{ordemProducao.limpar}" update="form"/>
 			</h:form>
 			
 			<br/>

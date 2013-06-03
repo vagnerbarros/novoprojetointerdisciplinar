@@ -10,9 +10,9 @@ import br.com.sisgpt.fachada.Fachada;
 
 import br.com.sisgpt.util.FacesContextUtil;
 
-@ManagedBean(name="ordemProducao")
+@ManagedBean(name="ordemEditar")
 @SessionScoped
-public class OrdemProducaoBean {
+public class EditarOrdemProducaoBean {
 
 	private OrdemProducao producao;
 
@@ -30,14 +30,28 @@ public class OrdemProducaoBean {
 	private String tipo_corte;
 	private String unidades;
 
-	public OrdemProducaoBean() {} 
+	public EditarOrdemProducaoBean() {
+		producao = (OrdemProducao) FacesContextUtil.getSessionAttribute("producaoAtulizar");
+		numero_pedido = producao.getNumero_pedido();
+		comprimento = producao.getComprimento() + "";
+		data_entrada = producao.getData_entrada();
+		data_entrega = producao.getData_entrega();
+		data_saida = producao.getData_saida();
+		largura = producao.getLargura() + "";
+		marca = producao.getMarca();
+		material = producao.getMaterial();
+		qtd_produzida = producao.getQuantidade_produzida() + "";
+		tempo_corte = producao.getTempo_corte() + "";
+		tipo = producao.getTipo();
+		tipo_corte = producao.getTipo_corte();
+		unidades = producao.getUnidades() + "";
+	} 
 
-	public void salvar(){
+	public void editar(){
 		
 		if(numero_pedido.equals("") || marca.equals("")){
 			FacesContextUtil.setMessageInformacao("ERRO", "Há campos de preencimento obrigatório vasios!");
 		}else {
-			OrdemProducao producao = new OrdemProducao();
 			producao.setNumero_pedido(numero_pedido);
 			producao.setMarca(marca);
 			producao.setUnidades(Integer.parseInt(unidades));
@@ -52,9 +66,9 @@ public class OrdemProducaoBean {
 			producao.setMaterial(material);
 			//producao.setTempo_corte(Integer.parseInt(tempo_corte));
 
-			Fachada.obterInstancia().cadastroOrdemProducao().ordemProducaoCadastrar(producao);
+			Fachada.obterInstancia().cadastroOrdemProducao().ordemProducaoAltera(producao);
 
-			FacesContextUtil.setMessageInformacao("INFO.:", "Cadastrado com sucesso!");
+			FacesContextUtil.setMessageInformacao("INFO.:", "Atualizado com sucesso!");
 			limpar();
 		}		
 	}

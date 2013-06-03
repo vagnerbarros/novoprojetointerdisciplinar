@@ -19,7 +19,7 @@
 		
 		<div class="limite">
 		
-			<h3>Controle de Eficiência - Novo</h3>
+			<h3>Editar Eficiência</h3>
 			<div class="clr"></div>
 			
 			<h:form id="form" styleClass="form_eficiencia">
@@ -27,7 +27,7 @@
 		
 				<h:outputLabel value="Número/Máquina:" styleClass="wh190"></h:outputLabel>
 				<br/>
-				<h:selectOneMenu value="#{controleEficiencia.maquina}"  styleClass="wh190 rSpace10" required="true">	    			
+				<h:selectOneMenu value="#{eficienciaEditar.maquina}"  styleClass="wh190 rSpace10" required="true">	    			
 	    			<f:selectItem itemLabel="Selecione Nº Máquina" itemValue="0"/>
 	    			<f:selectItems value="#{manter_maquina.listaMaquina}" var="maquina" 
 						    itemValue="#{maquina.id}" itemLabel="#{maquina.numero_maquina}" />
@@ -38,12 +38,12 @@
 				<h:outputLabel value="Data Parada:" styleClass="wh200"></h:outputLabel>
 				<h:outputLabel value="Data Funcionamento:" styleClass="wh200"></h:outputLabel>
 				
-				<p:calendar value="#{controleEficiencia.data_parada}"  styleClass="wh170 rSpace10"></p:calendar>
-				<p:calendar value="#{controleEficiencia.data_funcionamento}" styleClass="wh170"></p:calendar>
+				<p:calendar value="#{eficienciaEditar.data_parada}"  styleClass="wh170 rSpace10"></p:calendar>
+				<p:calendar value="#{eficienciaEditar.data_funcionamento}" styleClass="wh170"></p:calendar>
 				
 				<h:outputLabel value="Responsável:" styleClass="wh380"></h:outputLabel>
 	    		
-				<h:selectOneMenu value="#{controleEficiencia.operario}" styleClass="wh400" required="true">	    			
+				<h:selectOneMenu value="#{eficienciaEditar.operario}" styleClass="wh400" required="true">	    			
 	    			<f:selectItem itemLabel="Selecione Operário:" itemValue="0"/>
 	    			<f:selectItems value="#{manter_funcionario.listaOperarios}" var="operario" 
 						    itemValue="#{operario.id}" itemLabel="#{operario.nome}" />				    						
@@ -55,7 +55,7 @@
 				
 				<br/>
 				
-				<h:selectOneMenu value="#{controleEficiencia.tipo_corte}" styleClass="wh190 rSpace10">	    			
+				<h:selectOneMenu value="#{eficienciaEditar.tipo_corte}" styleClass="wh190 rSpace10">	    			
 	    			<f:selectItem itemLabel="Selecione o tipo:" itemValue="0"/>
 	    			<f:selectItem itemLabel="Dobra Meio" itemValue="Dobra Meio"/>
 	    			<f:selectItem itemLabel="Dobra Cantos" itemValue="Dobra Cantos"/>	
@@ -69,10 +69,10 @@
 				<br/>
 				
 				<h:outputLabel value="Descrição do Problema:" styleClass="wh380"></h:outputLabel>
-				<p:inputTextarea value="#{controleEficiencia.descricao_problema}" styleClass="wh380"  style="padding: 5px; margin-bottom: 10px;"></p:inputTextarea>
+				<p:inputTextarea value="#{eficienciaEditar.descricao_problema}" styleClass="wh380"  style="padding: 5px; margin-bottom: 10px;"></p:inputTextarea>
 				
 				
-				<p:commandButton value="Salvar" actionListener="#{controleEficiencia.salvarEficiencia}" update="form"></p:commandButton>
+				<p:commandButton value="Salvar" action="#{eficienciaEditar.atualizarEficiencia}" update="form"></p:commandButton>
 			
 		
 			</h:form>

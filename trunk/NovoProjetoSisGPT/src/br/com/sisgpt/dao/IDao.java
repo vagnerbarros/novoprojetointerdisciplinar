@@ -15,7 +15,7 @@ public interface IDao<T> {
 	
 	T load(String cpf);
 	
-	T load(int id);
+	T load(Long id);
 	
 	T load(String nome_campo, String valor_comparar);
 	

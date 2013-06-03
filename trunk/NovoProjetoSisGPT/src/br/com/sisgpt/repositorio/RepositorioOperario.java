@@ -40,7 +40,7 @@ public class RepositorioOperario implements IRepositorioOperario {
 		return dao.load("login", login, "senha", senha);
 	}
 
-	public Operario procurarOperario(String id) {
+	public Operario procurarOperario(Long id) {
 		return dao.load(id);
 	}
 }
