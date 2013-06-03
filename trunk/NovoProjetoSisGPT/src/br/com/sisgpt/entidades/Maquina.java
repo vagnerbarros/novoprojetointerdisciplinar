@@ -23,11 +23,14 @@ public class Maquina {
 	@GeneratedValue
 	private Long id;
 
-	@Column(name = "cabecote", length = 200, nullable = true)
-	private String cabecote;
+	@Column(name = "numero_maquina", length = 20, nullable = true)
+	private String numero_maquina;
 	
-	@Column(name = "tipo", length = 100, nullable = true)
-	private String tipo;
+	@Column(name = "cabecote_maquina", length = 200, nullable = true)
+	private String cabecote_maquina;
+	
+	@Column(name = "tipo_maquina", length = 100, nullable = true)
+	private String tipo_maquina;
 	
 	@Column(name = "rpm")
 	private int rpm;
@@ -50,21 +53,29 @@ public class Maquina {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public String getCabecote() {
-		return cabecote;
+	
+	public String getNumero_maquina() {
+		return numero_maquina;
 	}
 
-	public void setCabecote(String cabecote) {
-		this.cabecote = cabecote;
+	public void setNumero_maquina(String numero_maquina) {
+		this.numero_maquina = numero_maquina;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public String getCabecote_maquina() {
+		return cabecote_maquina;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setCabecote_maquina(String cabecote_maquina) {
+		this.cabecote_maquina = cabecote_maquina;
+	}
+
+	public String getTipo_maquina() {
+		return tipo_maquina;
+	}
+
+	public void setTipo_maquina(String tipo_maquina) {
+		this.tipo_maquina = tipo_maquina;
 	}
 
 	public int getRpm() {
