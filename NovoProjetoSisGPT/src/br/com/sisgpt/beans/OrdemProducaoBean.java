@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.event.ValueChangeEvent;
 
 import br.com.sisgpt.entidades.OrdemProducao;
 import br.com.sisgpt.fachada.Fachada;
@@ -25,15 +26,18 @@ public class OrdemProducaoBean {
 	private String marca;
 	private String material;
 	private String qtd_produzida;
-	private String tempo_corte;
 	private String tipo;
 	private String tipo_corte;
 	private String unidades;
 
+	private String quantidade;
+	private String rpm;
+	private String tempo_corte;
+
 	public OrdemProducaoBean() {} 
 
 	public void salvar(){
-		
+
 		if(numero_pedido.equals("") || marca.equals("")){
 			FacesContextUtil.setMessageInformacao("ERRO", "Há campos de preencimento obrigatório vasios!");
 		}else {
@@ -50,17 +54,32 @@ public class OrdemProducaoBean {
 			producao.setQuantidade_produzida(Integer.parseInt(qtd_produzida));
 			producao.setTipo(tipo);
 			producao.setMaterial(material);
-			//producao.setTempo_corte(Integer.parseInt(tempo_corte));
+			producao.setTempo_corte(Double.parseDouble(tempo_corte));
 
 			Fachada.obterInstancia().cadastroOrdemProducao().ordemProducaoCadastrar(producao);
 
-			FacesContextUtil.setMessageInformacao("INFO.:", "Cadastrado com sucesso!");
+			FacesContextUtil.setMessageInformacao("INFO", "Cadastrado com sucesso!");
 			limpar();
 		}		
 	}
 
-	public void limpar(){
+	public void calcular(){
+
+		double ftReducao = 0.993;
 		
+		if(!quantidade.equals("") && !rpm.equals("")){
+
+			int valorRPM = Integer.parseInt(rpm);
+			int q = Integer.parseInt(quantidade);
+			double temp = valorRPM * ftReducao;
+			double result = q / temp;
+			result = result / 3600;
+			tempo_corte = result + "";
+		}
+	}
+
+	public void limpar(){
+
 		numero_pedido = "";
 		marca = "";
 		unidades = "";
@@ -74,6 +93,8 @@ public class OrdemProducaoBean {
 		tipo = "";
 		material = "";
 		tempo_corte = "";
+		rpm = "";
+		quantidade = "";
 	}
 
 	public String getNumero_pedido() {
@@ -159,5 +180,17 @@ public class OrdemProducaoBean {
 	}
 	public void setProducao(OrdemProducao producao) {
 		this.producao = producao;
+	}
+	public String getQuantidade() {
+		return quantidade;
+	}
+	public void setQuantidade(String quantidade) {
+		this.quantidade = quantidade;
+	}
+	public String getRpm() {
+		return rpm;
+	}
+	public void setRpm(String rpm) {
+		this.rpm = rpm;
 	}
 }

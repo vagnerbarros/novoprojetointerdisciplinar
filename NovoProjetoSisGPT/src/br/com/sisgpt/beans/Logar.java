@@ -5,8 +5,6 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import org.hibernate.Session;
-
 import br.com.sisgpt.dominio.Funcao;
 import br.com.sisgpt.entidades.Operario;
 import br.com.sisgpt.fachada.Fachada;

@@ -76,6 +76,11 @@
 						<h:outputText value="#{ordem.unidades}">
 						</h:outputText>
 					</p:column>
+					
+					<p:column headerText="Tipo">
+						<h:outputText value="#{ordem.tipo_corte}">
+						</h:outputText>
+					</p:column>
 
 					<p:column headerText="Detalhar" style="width:30px;">
 						<p:commandButton value="Detalhar" action="#{relatorio.detalhar}"/>

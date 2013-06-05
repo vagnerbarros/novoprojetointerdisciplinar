@@ -1,22 +1,9 @@
 package br.com.sisgpt.fachada;
 
-import java.sql.Date;
-import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
-import java.util.List;
-
-import org.hibernate.Session;
-
 import br.com.sisgpt.cadastros.CadastroControleEficiencia;
 import br.com.sisgpt.cadastros.CadastroMaquina;
 import br.com.sisgpt.cadastros.CadastroOperario;
 import br.com.sisgpt.cadastros.CadastroOrdemProducao;
-import br.com.sisgpt.entidades.ControleEficiencia;
-import br.com.sisgpt.entidades.Maquina;
-import br.com.sisgpt.entidades.Operario;
-import br.com.sisgpt.entidades.OrdemProducao;
 import br.com.sisgpt.interfaces.IRepositorioControleEficiencia;
 import br.com.sisgpt.interfaces.IRepositorioMaquina;
 import br.com.sisgpt.interfaces.IRepositorioOperario;
