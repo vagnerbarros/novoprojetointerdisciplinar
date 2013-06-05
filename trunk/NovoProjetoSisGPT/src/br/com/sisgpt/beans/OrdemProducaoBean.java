@@ -54,7 +54,7 @@ public class OrdemProducaoBean {
 			producao.setQuantidade_produzida(Integer.parseInt(qtd_produzida));
 			producao.setTipo(tipo);
 			producao.setMaterial(material);
-			producao.setTempo_corte(Double.parseDouble(tempo_corte));
+			producao.setTempo_corte(tempo_corte);
 
 			Fachada.obterInstancia().cadastroOrdemProducao().ordemProducaoCadastrar(producao);
 
@@ -65,16 +65,23 @@ public class OrdemProducaoBean {
 
 	public void calcular(){
 
-		double ftReducao = 0.993;
+		double ftReducao = 0.0993;
 		
 		if(!quantidade.equals("") && !rpm.equals("")){
 
 			int valorRPM = Integer.parseInt(rpm);
 			int q = Integer.parseInt(quantidade);
-			double temp = valorRPM * ftReducao;
-			double result = q / temp;
-			result = result / 3600;
-			tempo_corte = result + "";
+			double QCM = valorRPM * ftReducao;
+			double result = q / QCM;
+			
+			int horas = (int) (result / 60);
+			result = (int)result % 60;
+			
+			String minutos = result + "";
+			int index = minutos.indexOf(".");
+			minutos = minutos.substring(0, index);
+			
+			tempo_corte = horas + ":" + minutos;
 		}
 	}
 

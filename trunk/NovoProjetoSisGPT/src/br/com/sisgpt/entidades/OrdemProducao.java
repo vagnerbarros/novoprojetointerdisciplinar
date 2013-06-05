@@ -56,8 +56,8 @@ public class OrdemProducao {
 	@Column(name = "material", length = 50, nullable = true)
 	private String material;
 	
-	@Column(name="tempo_corte")
-	private double tempo_corte;
+	@Column(name = "tempo_corte", length = 100, nullable = true)
+	private String tempo_corte;
 	
 	@Column(name = "status", length = 20, nullable = true)
 	private String status;
@@ -166,11 +166,11 @@ public class OrdemProducao {
 		this.material = material;
 	}
 
-	public double getTempo_corte() {
+	public String getTempo_corte() {
 		return tempo_corte;
 	}
 
-	public void setTempo_corte(double tempo_corte) {
+	public void setTempo_corte(String tempo_corte) {
 		this.tempo_corte = tempo_corte;
 	}
 
