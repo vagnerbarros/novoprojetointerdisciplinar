@@ -23,7 +23,7 @@
 			<div class="clr"></div>
 			
 			<h:form id="form" styleClass="form_ordem">
-		
+				<p:growl id="growl" showDetail="true" sticky="false" life="5000" />
 				<h:outputLabel value="Número Pedido:" styleClass="wh200"></h:outputLabel>
 				
 				<br/>
@@ -89,16 +89,6 @@
 				
 				<br/>
 				
-				<h:outputLabel value="Quantidade a produzir:" styleClass="wh200"></h:outputLabel>
-				<h:outputLabel value="Máquina:" styleClass="wh380"></h:outputLabel>
-				
-				<p:inputText styleClass="wh170 rSpace10"></p:inputText>
-				
-				<h:selectOneMenu styleClass="wh190 rSpace10" >	    			
-	    			<f:selectItem itemLabel="Select" itemValue="0"/>
-	    			<f:selectItems value="#{manter_maquina.listaMaquina}" var="maquina" 
-	    				itemValue="#{maquina.id}" itemLabel="#{maquina.rpm}" />
-	    		</h:selectOneMenu>
 				
 				<br/>
 				

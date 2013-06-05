@@ -24,6 +24,7 @@
 			
 			<h:form id="form" styleClass="form_ordem">
 		
+				<p:growl id="growl" showDetail="true" sticky="false" life="5000" />
 				<h:outputLabel value="Número Pedido:" styleClass="wh200"></h:outputLabel>
 				
 				<br/>
@@ -90,15 +91,25 @@
 				<br/>
 				
 				<h:outputLabel value="Quantidade a produzir:" styleClass="wh200"></h:outputLabel>
-				<h:outputLabel value="Máquina:" styleClass="wh380"></h:outputLabel>
+				<h:outputLabel value="Máquina:" styleClass="wh200"></h:outputLabel>
+				<h:outputLabel value="Tempo de Corte (Minutos):" styleClass="wh200"></h:outputLabel>
 				
-				<p:inputText styleClass="wh170 rSpace10"></p:inputText>
+				<p:inputText value="#{ordemProducao.quantidade}" styleClass="wh170 rSpace10">
+					<p:ajax event="keyup" update="tempo" />
+				</p:inputText>
 				
-				<h:selectOneMenu styleClass="wh190 rSpace10" >	    			
-	    			<f:selectItem itemLabel="Select" itemValue="0"/>
-	    			<f:selectItems value="#{manter_maquina.listaMaquina}" var="maquina" 
-	    				itemValue="#{maquina.id}" itemLabel="#{maquina.rpm}" />
+				<h:selectOneMenu value="#{ordemProducao.rpm}" styleClass="wh190 rSpace10" >	    			
+	    			<f:selectItem itemLabel="200" itemValue="200"/>
+	    			<f:selectItem itemLabel="300" itemValue="300"/>
+	    			<f:selectItem itemLabel="500" itemValue="500"/>
+	    			<f:selectItem itemLabel="700" itemValue="700"/>
+	    			<f:selectItem itemLabel="900" itemValue="900"/>
+	    			<f:selectItem itemLabel="1100" itemValue="1100"/>
+	    			<f:selectItem itemLabel="1400" itemValue="1400"/>
+	    			<p:ajax update="tempo" listener="#{ordemProducao.calcular}" />  
 	    		</h:selectOneMenu>
+				
+				<p:inputText id="tempo" value="#{ordemProducao.tempo_corte}" required="true" styleClass="wh170"></p:inputText>
 				
 				<br/>
 				
