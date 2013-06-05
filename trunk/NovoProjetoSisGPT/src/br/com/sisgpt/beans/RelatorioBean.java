@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.behavior.AjaxBehavior;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 
@@ -22,12 +24,13 @@ public class RelatorioBean {
 	private OrdemProducao ordem;
 	
 	public RelatorioBean(){
-		lista = Fachada.obterInstancia().cadastroOrdemProducao().ordemProducaoLista();
-		listaOrdem = new ListDataModel<OrdemProducao>(lista);
+		listaOrdem = new ListDataModel<OrdemProducao>();
 	}
 	public DataModel<OrdemProducao> getListaOrdem() {
-		lista = Fachada.obterInstancia().cadastroOrdemProducao().ordemProducaoLista();
-		listaOrdem = new ListDataModel<OrdemProducao>(lista);
+		if(data_inicial != null && data_final != null){
+			lista = Fachada.obterInstancia().cadastroOrdemProducao().ordemProducaoFiltrar(data_inicial, data_final);
+			listaOrdem = new ListDataModel<OrdemProducao>(lista);
+		}
 		return listaOrdem;
 	}
 	public void setListaOrdem(DataModel<OrdemProducao> listaOrdem) {

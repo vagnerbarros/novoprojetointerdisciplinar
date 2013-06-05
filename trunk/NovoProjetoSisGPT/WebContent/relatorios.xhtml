@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="css/style.css"></link>
 	<link rel="stylesheet" href="css/style_form.css"></link>
 </h:head>
-<h:body>
+<h:body id="body">
 	
 	<f:view>
 		<ui:include src="topo_sistema.xhtml"></ui:include>
@@ -26,20 +26,24 @@
 			<h:form styleClass="form_relatorio">
 				
 				<h:outputLabel value="Data Inicial:" styleClass="wh154"/>
-				<p:calendar value="#{relatorio.data_inicial}" styleClass="wh132"/>
+				<h:outputText id="inicial" value="#{relatorio.data_inicial}" />
+				<p:calendar value="#{relatorio.data_inicial}" styleClass="wh132">
+					<p:ajax event="blur" update="inicial" />
+				</p:calendar>
 
 				<h:outputLabel value="Data Final:" styleClass="wh154"/>
-				<p:calendar value="#{relatorio.data_final}" styleClass="wh132"/>
+				<h:outputText id="final" value="#{relatorio.data_final}" />
+				<p:calendar value="#{relatorio.data_final}" styleClass="wh132">
+					<p:ajax event="blur" update="final" />
+				</p:calendar>
 				
-				<p:commandButton value="Gerar Relatório" action="relatorio.filtrar">
+				<p:commandButton value="Gerar Relatório" partialSubmit="true" action="relatorio.listaOrdem">
+					<p:ajax update="dataTableRelatorio" />
 				</p:commandButton>
-		
-			</h:form>
-			
-			<h:form id="form" prependId="true">
+				
 
 				<p:dataTable id="dataTableRelatorio" var="ordem" styleClass="tabela_listagem"
-					value="#{relatorio.listaOrdem}" widgetVar="Ordem" filteredValue="#{relatorio.lista}"
+					value="#{relatorio.listaOrdem}" widgetVar="Ordem"
 					paginator="true" rows="5"
 					selection="#{relatorio.ordem}"
 					selectionMode="single"
